@@ -50,6 +50,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Tempat / Tanggal Lahir</th>
                                 <th></th>
+                                <th>Agama</th>
                                 <th>Keanggotaan</th>
                                 <th>Tanggal Meninggal</th>
                                 <th>Santunan Pelayanan</th>
@@ -81,6 +82,7 @@
                                 <td>{{$item->jenis_kelamin}}</td>
                                 <td>{{$item->tempat_lahir}} - {{$item->tanggal_lahir ? date('d M Y',strtotime($item->tanggal_lahir)) : ''}}</td>
                                 <td class="px-0"><span class="text-success"> {{$item->tanggal_lahir ? hitung_umur($item->tanggal_lahir) .' thn' : ''}} </span></td>
+                                <td>{{$item->agama}}</td>
                                 <td>
                                     @switch($item->status)
                                         @case(0)

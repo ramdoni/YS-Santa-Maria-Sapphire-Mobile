@@ -9,9 +9,11 @@
                     <hr />
                     <div class="row">
                         <div class="form-group col-md-7">
-                            <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong>+ Sumbangan <strong class="text-danger">Rp. 2.000</strong></label>
+                            <!-- <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong>+ Sumbangan <strong class="text-danger">Rp. 2.000</strong></label> -->
+                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. 30.000</strong></label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
-                                <option value=""> --- Minimal 3 Bulan --- </option>
+                                <option value=""> --- Minimal 1 Bulan --- </option>
+                                <option>1</option>
                                 <option>3</option>
                                 <option>6</option>
                                 <option>9</option>

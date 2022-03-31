@@ -44,9 +44,12 @@ class Insert extends Component
     }
     public function calculate_()
     {
-        $this->total_iuran_tetap = $this->iuran_tetap * 8000;
-        $this->total_sumbangan_tetap = $this->iuran_tetap * 2000;
-        $this->total = $this->total_iuran_tetap + $this->total_sumbangan_tetap;
+        // $this->total_iuran_tetap = $this->iuran_tetap * 8000;
+        // $this->total_sumbangan_tetap = $this->iuran_tetap * 2000;
+        // $this->total = $this->total_iuran_tetap + $this->total_sumbangan_tetap;
+
+        $this->total_iuran_tetap = $this->iuran_tetap * 30000;
+        $this->total = $this->total_iuran_tetap;
     }
      public function save()
     { 
