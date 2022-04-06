@@ -72,6 +72,8 @@ class Insert extends Component
 	public $extend_register3,$extend_register4,$extend_register5;
 	public $validate_form_1 = false,$validate_form_2=false,$validate_form_3=false,$validate_form_4=false,$validate_form_5=false;
 
+	
+
 	protected $listeners = ['save-all'=>'save_all'];
 
 	public function render()
@@ -512,18 +514,30 @@ class Insert extends Component
 		$this->umur = hitung_umur($this->tanggal_lahir);
 		$this->extend_register1=false;
         $this->extend_register2=false;
-        if($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan satu anggota
-            $this->extend_register1=true;
-        }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
-            $this->extend_register1=true;
-            $this->extend_register2=true;
-        }elseif($this->umur>=80){
-			$this->extend_register1=true;
-            $this->extend_register2=true;
-            $this->extend_register3=true;
-            $this->extend_register4=true;
-            $this->extend_register5=true;
-		}
+		// if($this->umur >=60 and $this->umur <=64){ // di atas 60 dan di bawah 64 tahun wajib mendaftarkan satu anggota
+        //     $this->extend_register1=false;
+        // }elseif($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan dua anggota
+        //     $this->extend_register1=true;
+		// 	$this->extend_register2=true;
+		// }elseif($this->umur >=75){ // diatas 75 tahun wajib mendaftarkan 5 anggota
+		// 	$this->extend_register1=true;
+		// 	$this->extend_register2=true;
+        //     $this->extend_register3=true;
+        //     $this->extend_register4=true;
+        //     $this->extend_register5=true;
+		// }
+
+		
+        // }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
+        //     $this->extend_register1=true;
+        //     $this->extend_register2=true;
+        // }elseif($this->umur>=80){
+		// 	$this->extend_register1=true;
+        //     $this->extend_register2=true;
+        //     $this->extend_register3=true;
+        //     $this->extend_register4=true;
+        //     $this->extend_register5=true;
+		// }
 	}
 	public function save()
     {
@@ -594,6 +608,7 @@ class Insert extends Component
      	$data->name_waris1 = $this->name_waris1;
      	$data->tempat_lahirwaris1 = $this->tempat_lahirwaris1;
      	$data->agama = $this->agama;
+     	$data->user_id_recomendation = $this->user_id_recomendation;
 
 		if($this->tanggal_lahirwaris1) $data->tanggal_lahirwaris1 = $this->tanggal_lahirwaris1;
 

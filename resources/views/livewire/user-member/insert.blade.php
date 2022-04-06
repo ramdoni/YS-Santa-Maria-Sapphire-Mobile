@@ -149,6 +149,32 @@
                             </select>
                             @error('agama') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
+                        <div class="col-md-6">
+                            <label>User Rekomendator</label>
+                            <input list="rekomendator" type="text" class="form-control" id="user_id_recomendation" name="user_id_recomendation" wire:model="user_id_recomendation">
+                            <datalist id="rekomendator">
+                                @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
+                                    @if(hitung_umur($item->tanggal_lahir) <= '60')
+                                        continue;
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option> 
+                                    @endif
+                                
+                                @endforeach
+                            </datalist>
+                            <!-- <select class="form-control" name="user_rekomendator" wire:model="user_rekomendator">
+                                <option value=""> --- User Rekomendator --- </option>
+                                @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
+                                    @if(hitung_umur($item->tanggal_lahir) <= '60')
+                                        continue;
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }} {{ hitung_umur($item->tanggal_lahir) }}</option> 
+                                    @endif
+                                
+                                @endforeach
+                            </select> -->
+                            @error('user_rekomendator') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">

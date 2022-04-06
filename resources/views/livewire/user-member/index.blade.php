@@ -52,6 +52,7 @@
                                 <th></th>
                                 <th>Agama</th>
                                 <th>Keanggotaan</th>
+                                <th>Rekomendator</th>
                                 <th>Tanggal Meninggal</th>
                                 <th>Santunan Pelayanan</th>
                                 <th>Santunan Uang Duka</th>
@@ -92,7 +93,30 @@
                                             <a href="javascript:void(0)" class="badge badge-warning">Inactive</a>
                                         @break
                                         @case(2)
-                                            <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" data-toggle="tooltip" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
+                                            <?php
+                                                $countrec = App\Models\UserMember::where('user_id_recomendation', $item->id)->get();
+                                                // echo count($countrec);
+                                            
+                                                if(hitung_umur($item->tanggal_lahir) >=60 and hitung_umur($item->tanggal_lahir) <=64){
+                                                    $recmember = '1';
+                                                }
+                                                if(hitung_umur($item->tanggal_lahir) >=65 and hitung_umur($item->tanggal_lahir) <=74){
+                                                    $recmember = '3';
+                                                }
+                                                if(hitung_umur($item->tanggal_lahir) >=75){
+                                                    $recmember = '5';
+                                                }
+                                            ?>
+                                            
+                                            @if(hitung_umur($item->tanggal_lahir) >= 60)
+                                                @if($recmember < $countrec)
+                                                    <a href="javascript:void(0)" class="badge badge-warning" data-toggle="tooltip" title="Member Rekomendasi masih kurang!!!">Inactive</a>   
+                                                @else
+                                                    <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" data-toggle="tooltip" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
+                                                @endif
+                                            @else
+                                                <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" data-toggle="tooltip" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
+                                            @endif
                                         @break
                                         @case(3)
                                             <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-danger">Ditolak</a>
@@ -108,6 +132,13 @@
                                     {{-- @if(isset($item->tanggal_diterima))
                                         {{date('d M Y',strtotime($item->tanggal_diterima))}}
                                     @endif --}}
+                                </td>
+                                <td>
+                                    <?php 
+                                        $rekomendator = App\Models\UserMember::select('name')->where('id', $item->user_id_recomendation)->first();
+                                        $rekomendator = $rekomendator;
+                                        echo @$rekomendator->name;
+                                    ?>
                                 </td>
                                 <td><a href="javascript:void(0)" wire:click="$emit('modal-detail-meninggal',{{$item->id}})">{{isset($item->klaim->tgl_kematian) ? date('d-M-Y',strtotime($item->klaim->tgl_kematian)) : ''}}</a></td>
                                 <td>{{isset($item->klaim->santunan_pelayanan) ? format_idr($item->klaim->santunan_pelayanan) : ''}}</td>
