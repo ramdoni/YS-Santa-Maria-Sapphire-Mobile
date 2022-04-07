@@ -72,6 +72,8 @@ class Insert extends Component
 	public $extend_register3,$extend_register4,$extend_register5;
 	public $validate_form_1 = false,$validate_form_2=false,$validate_form_3=false,$validate_form_4=false,$validate_form_5=false;
 
+	
+
 	protected $listeners = ['save-all'=>'save_all'];
 
 	public function render()
@@ -396,11 +398,13 @@ class Insert extends Component
 	}
 	public function calculate_()
 	{
-		$this->total_iuran_tetap = $this->iuran_tetap * 8000;
-		$this->total_sumbangan = $this->sumbangan * 2000;
+		// $this->total_iuran_tetap = $this->iuran_tetap * 8000;
+		// $this->total_sumbangan = $this->sumbangan * 2000;
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
+		// $this->total += $this->total_iuran_tetap;
+		// $this->total += $this->total_sumbangan;
+		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
 		$this->total += $this->total_iuran_tetap;
-		$this->total += $this->total_sumbangan;
 	}
 	public function extend1_calculate_()
 	{
@@ -469,15 +473,30 @@ class Insert extends Component
 		if($num==4) $this->validate_form_4 = true;
 		if($num==5) $this->validate_form_5 = true;
 		
-		if($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan satu anggota
+		// if($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan satu anggota
+        //     if($this->validate_form_1){
+		// 		$this->save();
+		// 	}
+        // }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
+        //     if($this->validate_form_1 and $this->validate_form_2 ){
+		// 		$this->save();
+		// 	}
+        // }elseif($this->umur>=80){
+        //     if($this->validate_form_1==true and $this->validate_form_2==true and $this->validate_form_3==true and $this->validate_form_4==true and $this->validate_form_5==true){
+		// 		$this->save();
+		// 	}
+		// }
+
+		
+		if($this->umur >=60 and $this->umur <=64){ // di atas 60 dan di bawah 64 tahun wajib mendaftarkan satu anggota
             if($this->validate_form_1){
 				$this->save();
 			}
-        }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
-            if($this->validate_form_1 and $this->validate_form_2 ){
+        }elseif($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan 3 anggota
+            if($this->validate_form_1 and $this->validate_form_2  and $this->validate_form_3 ){
 				$this->save();
 			}
-        }elseif($this->umur>=80){
+        }elseif($this->umur>=75){
             if($this->validate_form_1==true and $this->validate_form_2==true and $this->validate_form_3==true and $this->validate_form_4==true and $this->validate_form_5==true){
 				$this->save();
 			}
@@ -495,18 +514,30 @@ class Insert extends Component
 		$this->umur = hitung_umur($this->tanggal_lahir);
 		$this->extend_register1=false;
         $this->extend_register2=false;
-        if($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan satu anggota
-            $this->extend_register1=true;
-        }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
-            $this->extend_register1=true;
-            $this->extend_register2=true;
-        }elseif($this->umur>=80){
-			$this->extend_register1=true;
-            $this->extend_register2=true;
-            $this->extend_register3=true;
-            $this->extend_register4=true;
-            $this->extend_register5=true;
-		}
+		// if($this->umur >=60 and $this->umur <=64){ // di atas 60 dan di bawah 64 tahun wajib mendaftarkan satu anggota
+        //     $this->extend_register1=false;
+        // }elseif($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan dua anggota
+        //     $this->extend_register1=true;
+		// 	$this->extend_register2=true;
+		// }elseif($this->umur >=75){ // diatas 75 tahun wajib mendaftarkan 5 anggota
+		// 	$this->extend_register1=true;
+		// 	$this->extend_register2=true;
+        //     $this->extend_register3=true;
+        //     $this->extend_register4=true;
+        //     $this->extend_register5=true;
+		// }
+
+		
+        // }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
+        //     $this->extend_register1=true;
+        //     $this->extend_register2=true;
+        // }elseif($this->umur>=80){
+		// 	$this->extend_register1=true;
+        //     $this->extend_register2=true;
+        //     $this->extend_register3=true;
+        //     $this->extend_register4=true;
+        //     $this->extend_register5=true;
+		// }
 	}
 	public function save()
     {
@@ -520,7 +551,7 @@ class Insert extends Component
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			'sumbangan'=>'required',
+			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'koordinator_id' => 'required',
@@ -538,10 +569,11 @@ class Insert extends Component
 		
 		$password = generate_password($this->name,$this->tanggal_lahir);
 		
-		$counting =  get_setting('counting_no_anggota')+1;
-		update_setting('counting_no_anggota',$counting);
+		$counting =  get_setting('counting_no_anggota_new')+1;
+		update_setting('counting_no_anggota_new',$counting);
 
-		$no_anggota = date('ym',strtotime($this->tanggal_diterima)).str_pad($counting,5, '0', STR_PAD_LEFT);
+		// $no_anggota = date('ym',strtotime($this->tanggal_diterima)).str_pad($counting,5, '0', STR_PAD_LEFT);
+		$no_anggota = date('ym',strtotime($this->tanggal_diterima)).str_pad($counting,6, '0', STR_PAD_LEFT);
 		
     	$user = new User();
         $user->user_access_id = 4; // Member
@@ -575,6 +607,8 @@ class Insert extends Component
      	$data->blood_type = $this->blood_type;
      	$data->name_waris1 = $this->name_waris1;
      	$data->tempat_lahirwaris1 = $this->tempat_lahirwaris1;
+     	$data->agama = $this->agama;
+     	$data->user_id_recomendation = $this->user_id_recomendation;
 
 		if($this->tanggal_lahirwaris1) $data->tanggal_lahirwaris1 = $this->tanggal_lahirwaris1;
 
@@ -692,32 +726,32 @@ class Insert extends Component
 		}
 
 		if($this->validate_form_1){ 
-			$counting =  get_setting('counting_no_anggota')+1;
-			update_setting('counting_no_anggota',$counting);
+			$counting =  get_setting('counting_no_anggota_new')+1;
+			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>1,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
 
 		if($this->validate_form_2){ 
-			$counting =  get_setting('counting_no_anggota')+1;
-			update_setting('counting_no_anggota',$counting);
+			$counting =  get_setting('counting_no_anggota_new')+1;
+			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>2,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
 
 		if($this->validate_form_3){
-			$counting =  get_setting('counting_no_anggota')+1;
-			update_setting('counting_no_anggota',$counting); 
+			$counting =  get_setting('counting_no_anggota_new')+1;
+			update_setting('counting_no_anggota_new',$counting); 
 			$this->emit('save_rekomendasi',['num'=>3,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
 
 		if($this->validate_form_4){ 
-			$counting =  get_setting('counting_no_anggota')+1;
-			update_setting('counting_no_anggota',$counting);
+			$counting =  get_setting('counting_no_anggota_new')+1;
+			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>4,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
 
 		if($this->validate_form_5){ 
-			$counting =  get_setting('counting_no_anggota')+1;
-			update_setting('counting_no_anggota',$counting);
+			$counting =  get_setting('counting_no_anggota_new')+1;
+			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>5,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
 		

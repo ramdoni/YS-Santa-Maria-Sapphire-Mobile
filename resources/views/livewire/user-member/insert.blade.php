@@ -21,14 +21,23 @@
         <form class="form-auth-small" method="POST" wire:submit.prevent="save" action="" {!!($is_success?'style="display:none"':'')!!}>
             @if($extend_register1 || $extend_register2)
                 <div class="alert alert-warning alert-dismissible" role="alert">
-                    @if($umur <=74)
+                    <!-- if($umur <=74)
                     <i class="fa fa-warning"></i> Calon anggota berusia 65 s/d 74 wajib mendaftarkan 1 (satu) anggota baru di bawah usia 50 th<br />
-                    @endif
-                    @if($umur >=75 and $umur <=79)
+                    endif
+                    if($umur >=75 and $umur <=79)
                     <i class="fa fa-warning"></i> Calon anggota berusia 75 th keatas, wajib mendaftarkan 2 (dua) anggota baru di bawah usia 50 th 
-                    @endif
-                    @if($umur >=80)
+                    endif
+                    if($umur >=80)
                     <i class="fa fa-warning"></i> Calon anggota berusia 80 th keatas, wajib mendaftarkan 5 (lima) anggota baru di bawah usia 50 th 
+                    endif -->
+                    @if($umur >=60 and $umur <=64)
+                    <i class="fa fa-warning"></i> Calon anggota berusia 60 s/d 64 wajib mendaftarkan 1 (satu) anggota baru di bawah usia 50 th<br />
+                    @endif
+                    @if($umur >=65 and $umur <=74)
+                    <i class="fa fa-warning"></i> Calon anggota berusia 65 s/d 74 wajib mendaftarkan 3 (tiga) anggota baru di bawah usia 50 th 
+                    @endif
+                    @if($umur >=75)
+                    <i class="fa fa-warning"></i> Calon anggota berusia 75 th keatas, wajib mendaftarkan 5 (lima) anggota baru di bawah usia 50 th 
                     @endif
                 </div>            
             @endif
@@ -90,6 +99,7 @@
                             @error('phone_number') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputName">E-mail</label>
@@ -123,6 +133,47 @@
                             </label>
                             <input type="date" class="form-control datepicker" id="tanggal_lahir" placeholder="Enter Date of Birth" wire:change="hitungUmur" wire:model="tanggal_lahir">
                             @error('tanggal_lahir') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Agama</label>
+                            <select class="form-control" name="agama" wire:model="agama">
+                                <option value=""> --- Agama --- </option>
+                                <option>Islam</option> 
+                                <option>Kristen</option> 
+                                <option>Katolik</option> 
+                                <option>Hindu</option> 
+                                <option>Buddha</option> 
+                                <option>Konghucu</option> 
+                            </select>
+                            @error('agama') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label>User Rekomendator</label>
+                            <input list="rekomendator" type="text" class="form-control" id="user_id_recomendation" name="user_id_recomendation" wire:model="user_id_recomendation">
+                            <datalist id="rekomendator">
+                                @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
+                                    @if(hitung_umur($item->tanggal_lahir) <= '60')
+                                        continue;
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option> 
+                                    @endif
+                                
+                                @endforeach
+                            </datalist>
+                            <!-- <select class="form-control" name="user_rekomendator" wire:model="user_rekomendator">
+                                <option value=""> --- User Rekomendator --- </option>
+                                @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
+                                    @if(hitung_umur($item->tanggal_lahir) <= '60')
+                                        continue;
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->name }} {{ hitung_umur($item->tanggal_lahir) }}</option> 
+                                    @endif
+                                
+                                @endforeach
+                            </select> -->
+                            @error('user_rekomendator') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
                 </div>
@@ -166,7 +217,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
                                 <option value=""> --- Minimal 6 Bulan --- </option>
@@ -185,6 +236,16 @@
                                 @endfor
                             </select>
                             @error('sumbangan') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div> -->
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. 30.000</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
+                            <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
+                                <option value=""> --- Minimal 3 Bulan --- </option>
+                                @for($i=3;$i<=40;$i++)
+                                <option>{{$i}}</option>
+                                @endfor
+                            </select>
+                            @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
                     <div class="row">
