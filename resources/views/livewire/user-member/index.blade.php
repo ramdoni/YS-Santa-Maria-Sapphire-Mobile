@@ -112,10 +112,10 @@
                                                 @if($recmember < $countrec)
                                                     <a href="javascript:void(0)" class="badge badge-warning" data-toggle="tooltip" title="Member Rekomendasi masih kurang!!!">Inactive</a>   
                                                 @else
-                                                    <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" data-toggle="tooltip" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
+                                                    <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
                                                 @endif
                                             @else
-                                                <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" data-toggle="tooltip" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
+                                                <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
                                             @endif
                                         @break
                                         @case(3)

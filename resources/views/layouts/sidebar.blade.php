@@ -49,34 +49,14 @@
                         <li class="{{ (Request::segment(1) === 'users') ? 'active' : null }}">
                             <a href="{{route('users.index')}}"><i class="icon-users"></i> <span>User Login</span></a>
                         </li>
-                        <li
-                            class="{{ Request::segment(1) === 'sapphire' ? 'active' : null }}">
-                            <a href="#App" class="has-arrow"><i class="fa fa-database"></i> <span>Sapphire</span></a>
-                            <ul>
-                                <li class="{{ Request::segment(2) === 'koordinator' ? 'active' : null }}">
-                                    <a href="">Koordinator</a>
-                                </li>
-                                <li class="{{ Request::segment(2) === 'anggota' ? 'active' : null }}">
-                                    <a href="{{route('sapphire.anggota.index')}}">Anggota</a>
-                                </li>
-                                <li class="{{ Request::segment(2) === 'iuran' ? 'active' : null }}">
-                                    <a href="{{route('sapphire.iuran.index')}}">Iuran</a>
-                                </li>
-                            </ul>
+                        <li class="{{ Request::segment(1) === 'koordinator' ? 'active' : null }}">
+                            <a href="{{route('koordinator.index')}}"><i class="icon-users"></i> <span>Koordinato</span>r</a>
                         </li>
-                        <li class="{{ Request::segment(1) === 'koordinator' || Request::segment(1) === 'anggota' || Request::segment(1) === 'iuran' ? 'active' : null }}">
-                            <a href="#App" class="has-arrow"><i class="fa fa-database"></i> <span>Platinum</span></a>
-                            <ul>
-                                <li class="{{ Request::segment(1) === 'koordinator' ? 'active' : null }}">
-                                    <a href="{{route('koordinator.index')}}">Koordinator</a>
-                                </li>
-                                <li class="{{ Request::segment(1) === 'user-member' ? 'active' : null }}">
-                                    <a href="{{route('user-member.index')}}">Anggota</a>
-                                </li>
-                                <li class="{{ Request::segment(1) === 'iuran' ? 'active' : null }}">
-                                    <a href="{{route('iuran.index')}}">Iuran</a>
-                                </li>
-                            </ul>
+                        <li class="{{ Request::segment(1) === 'user-member' ? 'active' : null }}">
+                            <a href="{{route('user-member.index')}}"><i class="icon-users"></i> <span>Anggota</span></a>
+                        </li>
+                        <li class="{{ Request::segment(1) === 'iuran' ? 'active' : null }}">
+                            <a href="{{route('iuran.index')}}"><i class="icon-users"></i> <span>Iuran</span></a>
                         </li>
                         <li class="{{ (Request::segment(1) === 'bank-account') ? 'active' : null }}">
                             <a href="{{route('bank-account.index')}}"><i class="fa fa-bank"></i>Bank Account</a>
