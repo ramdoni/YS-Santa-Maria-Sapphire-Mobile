@@ -42,10 +42,7 @@ namespace Composer\Autoload;
  */
 class ClassLoader
 {
-<<<<<<< HEAD
-=======
     /** @var ?string */
->>>>>>> e1ba8d5d6dce9c4f4f7f049afc34aa0d3890bb6e
     private $vendorDir;
 
     // PSR-4
@@ -98,10 +95,6 @@ class ClassLoader
     /** @var ?string */
     private $apcuPrefix;
 
-<<<<<<< HEAD
-    private static $registeredLoaders = array();
-
-=======
     /**
      * @var self[]
      */
@@ -110,18 +103,14 @@ class ClassLoader
     /**
      * @param ?string $vendorDir
      */
->>>>>>> e1ba8d5d6dce9c4f4f7f049afc34aa0d3890bb6e
     public function __construct($vendorDir = null)
     {
         $this->vendorDir = $vendorDir;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return string[]
      */
->>>>>>> e1ba8d5d6dce9c4f4f7f049afc34aa0d3890bb6e
     public function getPrefixes()
     {
         if (!empty($this->prefixesPsr0)) {
@@ -496,14 +485,11 @@ class ClassLoader
         return self::$registeredLoaders;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param  string       $class
      * @param  string       $ext
      * @return string|false
      */
->>>>>>> e1ba8d5d6dce9c4f4f7f049afc34aa0d3890bb6e
     private function findFileWithExtension($class, $ext)
     {
         // PSR-4 lookup

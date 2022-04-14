@@ -41,6 +41,7 @@ class KonfirmasiMeninggal extends Component
         $tahunKlaim = ($tahun !=0 ? $tahun * 12 : 0) + $bulan;
         
         $this->lama_keanggotaan = $tahunKlaim;
+        // dd($tahunKlaim);
         $this->level_claim = 0;
 
         if($tahunKlaim>12)
@@ -96,22 +97,43 @@ class KonfirmasiMeninggal extends Component
         // }
 
 
-        if($tahunKlaim >=1 and $tahunKlaim < 2){
-            $this->santunan_pelayanan = (get_setting('santunan_pelayanan_in_semarang'))  * 0.25;
-            $this->santunan_uang_duka = 0;
-            $this->persen = 25;
-            $this->level_claim = 1;
-        }elseif($tahunKlaim >=2 and $tahunKlaim <= 3){
-            $this->santunan_pelayanan = (get_setting('santunan_pelayanan_in_semarang'))  * 0.5;
-            $this->santunan_uang_duka = 0;
-            $this->persen = 50;
-            $this->level_claim = 2;
-        }elseif($tahunKlaim < 3){
-            $this->santunan_pelayanan = get_setting('santunan_pelayanan_in_semarang');
-            $this->santunan_uang_duka = 0;
-            $this->persen = 100;
-            $this->level_claim = 3;
+        if($tahun < 1){
+            if($bulan >= 6 and $bulan <= 12){
+                $this->santunan_pelayanan = (get_setting('nominal_santunan'))  * 0.25;
+                $this->santunan_uang_duka = 0;
+                $this->persen = 25;
+                $this->level_claim = 1;
+            }
+        }else{
+            if($tahun >=1 and $tahun <= 2){
+                $this->santunan_pelayanan = (get_setting('nominal_santunan'))  * 0.5;
+                $this->santunan_uang_duka = 0;
+                $this->persen = 50;
+                $this->level_claim = 2;
+            }elseif($tahun >= 3){
+                $this->santunan_pelayanan = get_setting('nominal_santunan');
+                $this->santunan_uang_duka = 0;
+                $this->persen = 100;
+                $this->level_claim = 3;
+            }
         }
+
+        // if($bulan >= 6 and $tahun < 1){
+        //     $this->santunan_pelayanan = (get_setting('nominal_santunan'))  * 0.25;
+        //     $this->santunan_uang_duka = 0;
+        //     $this->persen = 25;
+        //     $this->level_claim = 1;
+        // }elseif($tahun >=1 and $tahun <= 2){
+        //     $this->santunan_pelayanan = (get_setting('nominal_santunan'))  * 0.5;
+        //     $this->santunan_uang_duka = 0;
+        //     $this->persen = 50;
+        //     $this->level_claim = 2;
+        // }elseif($tahun >= 3){
+        //     $this->santunan_pelayanan = get_setting('nominal_santunan');
+        //     $this->santunan_uang_duka = 0;
+        //     $this->persen = 100;
+        //     $this->level_claim = 3;
+        // }
         
     }
     
