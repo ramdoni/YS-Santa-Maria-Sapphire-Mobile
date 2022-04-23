@@ -82,7 +82,7 @@
                                     <td class="py-2">{{format_idr($santunan_pelayanan)}}</td>
                                     @endif
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th class="py-2">{{ __('Santunan Uang Duka')}}</th>
                                     @if($city_other=='OTHER')
                                     <td>
@@ -94,7 +94,7 @@
                                     @else
                                     <td class="py-2">{{format_idr($santunan_uang_duka)}}</td>
                                     @endif
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th class="py-2">{{ __('Total Hak / Total Klaim')}}</th>
                                     @if($city_other=='OTHER')
