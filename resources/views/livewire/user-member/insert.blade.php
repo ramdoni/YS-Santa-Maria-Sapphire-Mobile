@@ -217,7 +217,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <!-- <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
                                 <option value=""> --- Minimal 6 Bulan --- </option>
@@ -236,8 +236,8 @@
                                 @endfor
                             </select>
                             @error('sumbangan') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div> -->
-                        <div class="form-group col-md-6">
+                        </div>
+                        <!-- <div class="form-group col-md-6">
                             <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. 30.000</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
                                 <option value=""> --- Minimal 3 Bulan --- </option>
@@ -246,7 +246,7 @@
                                 @endfor
                             </select>
                             @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
