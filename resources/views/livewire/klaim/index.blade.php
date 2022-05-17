@@ -33,7 +33,7 @@
                             <tr>
                                 <td style="width: 50px;">{{$k+1}}</td>
                                 <td><a href="{{route('klaim.edit',['id'=>$item->id])}}">{{$item->form_no}}</a></td>
-                                <td>{{$item->user_member->no_anggota_platinum}}</td>
+                                <td>{{isset($item->user_member->no_anggota_platinum)?$item->user_member->no_anggota_platinum:'-'}}</td>
                                 <td>{{isset($item->user_member->name)?$item->user_member->name:''}}</td>
                                 <td>{{$item->user_member->tanggal_diterima}}</td>
                                 <td>{{$item->tgl_kematian}}</td>

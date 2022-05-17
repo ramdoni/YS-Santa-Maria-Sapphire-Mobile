@@ -872,6 +872,7 @@ class ComposerStaticInit8eb009ed5d020576fc59907df4023d0b
         'App\\Models\\UserMember' => __DIR__ . '/../..' . '/app/Models/UserMember.php',
         'App\\Models\\UserMemberAhliWaris' => __DIR__ . '/../..' . '/app/Models/UserMemberAhliWaris.php',
         'App\\Models\\UserMemberExtend' => __DIR__ . '/../..' . '/app/Models/UserMemberExtend.php',
+        'App\\Models\\UserPlatinum' => __DIR__ . '/../..' . '/app/Models/UserPlatinum.php',
         'App\\Models\\Vendor' => __DIR__ . '/../..' . '/app/Models/Vendor.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

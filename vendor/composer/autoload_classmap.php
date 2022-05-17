@@ -156,6 +156,7 @@ return array(
     'App\\Models\\UserMember' => $baseDir . '/app/Models/UserMember.php',
     'App\\Models\\UserMemberAhliWaris' => $baseDir . '/app/Models/UserMemberAhliWaris.php',
     'App\\Models\\UserMemberExtend' => $baseDir . '/app/Models/UserMemberExtend.php',
+    'App\\Models\\UserPlatinum' => $baseDir . '/app/Models/UserPlatinum.php',
     'App\\Models\\Vendor' => $baseDir . '/app/Models/Vendor.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

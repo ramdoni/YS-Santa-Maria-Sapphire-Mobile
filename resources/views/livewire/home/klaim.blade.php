@@ -21,9 +21,9 @@
                 @foreach($data as $k => $item)
                 <tr>
                     <td style="width: 50px;">{{$number}}</td>
-                    <td>{{$item->user_member->no_anggota_platinum}}</td>
+                    <td>{{isset($item->user_member->no_anggota_platinum) ? $item->user_member->no_anggota_platinum : '-'}}</td>
                     <td>{{isset($item->user_member->name)?$item->user_member->name:''}}</td>
-                    <td>{{$item->user_member->tanggal_diterima}}</td>
+                    <td>{{isset($item->user_member->tanggal_diterima) ? $item->user_member->tanggal_diterima : '-'}}</td>
                     <td>{{$item->tgl_kematian}}</td>
                     <td>{{$item->tgl_pengajuan}}</td>
                     <td>{{format_idr($item->santunan_pelayanan)}}</td>
