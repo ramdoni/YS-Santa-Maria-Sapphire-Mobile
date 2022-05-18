@@ -78,15 +78,13 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label>Iuran Tetap</label>                                                
+                                    <label>Iuran</label>                                                
                                     <input type="text" class="form-control" wire:model="iuran_tetap" />
                                 </div>
-                                <div class="form-group col-md-6">
+                                <!-- <div class="form-group col-md-6">
                                     <label>Sumbangan</label>                                                
                                     <input type="text" class="form-control" wire:model="sumbangan" />
-                                </div>
-                            </div>
-                            <div class="row">
+                                </div> -->
                                 <div class="form-group col-md-6">
                                     <label>Uang Pendaftaran</label>                                                
                                     <input type="text" class="form-control" wire:model="uang_pendaftaran" />

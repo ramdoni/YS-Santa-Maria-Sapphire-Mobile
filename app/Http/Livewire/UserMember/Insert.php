@@ -403,7 +403,7 @@ class Insert extends Component
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
 		// $this->total += $this->total_iuran_tetap;
 		// $this->total += $this->total_sumbangan;
-		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
+		$this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
 		$this->total += $this->total_iuran_tetap;
 	}
 	public function extend1_calculate_()
@@ -551,7 +551,7 @@ class Insert extends Component
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			'sumbangan'=>'required',
+			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'koordinator_id' => 'required',

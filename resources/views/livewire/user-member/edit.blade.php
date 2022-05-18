@@ -174,9 +174,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <p class="mb-0">Iuran Tetap <strong class="text-danger float-right">{{$iuran_tetap}} x Rp. 8.000 = {{format_idr($iuran_tetap*8000)}}</strong></p>
-                    <hr class="mt-0" />
-                    <p class="mb-0">Sumbangan <strong class="text-danger float-right">{{$sumbangan}} x Rp. 2.000 = {{format_idr($total_sumbangan)}}</strong></p>
+                    <p class="mb-0">Iuran <strong class="text-danger float-right">{{$iuran_tetap}} x Rp. {{format_idr(get_setting('iuran_tetap'))}} = {{format_idr($iuran_tetap*get_setting('iuran_tetap'))}}</strong></p>
                     <hr class="mt-0" />
                     <p class="mb-0">Uang Pendaftaran - Sukarela <strong class="text-danger float-right">Rp. {{format_idr($uang_pendaftaran)}}</strong></p>           
                     <hr class="mt-0" />
