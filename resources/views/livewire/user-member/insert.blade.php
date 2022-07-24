@@ -172,66 +172,31 @@
                         <input type="text" class="form-control" id="address" placeholder="Enter address" wire:model="address">
                         @error('address') <span class="text-danger">{{ $message }}</span> @enderror
                     </div> 
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputAlamat">Kota/Kabupaten</label>
-                            <select class="form-control" wire:model="city">
-                                <option value=""> --- Kota/Kabupaten --- </option>
-                                @foreach(\App\Models\City::orderBy('code','ASC')->get() as $item)
-                                <option value="{{$item->code}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
-                            @error('city')
+                    <div class="form-group">
+                        <label for="exampleInputAlamat">Kota/Kabupaten</label>
+                        <select class="form-control" wire:model="city">
+                            <option value=""> --- Kota/Kabupaten --- </option>
+                            @foreach(\App\Models\City::orderBy('code','ASC')->get() as $item)
+                            <option value="{{$item->code}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('city')
                             <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            @if($city=='OTHER')
+                        @enderror
+                        @if($city=='OTHER')
                             <div class="form-group">
                                 <input type="text" class="form-control" id="city_lainnya" placeholder="Enter Other City" wire:model="city_lainnya">
                                 @error('city_lainnya') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @endif
-                        </div>
-                        
-                        <div class="form-group col-md-6">
-                            <label>{{ __('Koordinator')}}</label>
-                            <select class="form-control" wire:model="koordinator_id">
-                                <option value=""> --- Select Koordinator --- </option>
-                                <!-- <option value="1">Kantor</option> -->
-                                @foreach(
-                                \App\Models\UserMember::join('users','users.id','=','user_member.user_id')->where('users.user_access_id',3)->where('status',2)->select('user_member.*')->orderBy('user_member.name','ASC')->get() as $koordinator)
-                                    <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
-                                @endforeach
-                            </select>
-                            @error('koordinator_id') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
+                        @endif
                     </div>
                     <div class="row">
-                        <!-- <div class="form-group col-md-6">
-                            <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
-                            <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
-                                <option value=""> --- Minimal 6 Bulan --- </option>
-                                @for($i=6;$i<=40;$i++)
-                                <option>{{$i}}</option>
-                                @endfor
-                            </select>
-                            @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputAlamat">Sumbangan <strong class="text-danger">Rp. 2.000</strong>  (Rp {{format_idr($total_sumbangan)}})</label>
-                            <select class="form-control" wire:model="sumbangan" wire:change="calculate_">
-                                <option value=""> --- Minimal 6 Bulan --- </option>
-                                @for($i=6;$i<=40;$i++)
-                                <option>{{$i}}</option>
-                                @endfor
-                            </select>
-                            @error('sumbangan') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div> -->
                         <div class="form-group col-md-12">
                             <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(get_setting('iuran_tetap'))}}</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
                                 <option value=""> --- Minimal 3 Bulan --- </option>
                                 @for($i=3;$i<=40;$i++)
-                                <option>{{$i}}</option>
+                                    <option>{{$i}}</option>
                                 @endfor
                             </select>
                             @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
@@ -278,26 +243,50 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="exampleInputAlamat">File Bukti Pembayaran</label>
-                        <input type="file" class="form-control" id="file_konfirmasi" wire:model="file_konfirmasi">
-                        @error('file_konfirmasi') <span class="text-danger">{{ $message }}</span> @enderror
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputAlamat">File Bukti Pembayaran</label>
+                            <input type="file" class="form-control" id="file_konfirmasi" wire:model="file_konfirmasi">
+                            @error('file_konfirmasi') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputAlamat">Foto KTP</label>
+                            <input type="file" class="form-control" id="foto_ktp" wire:model="foto_ktp">
+                            @error('foto_ktp') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputAlamat">Foto KK</label>
+                            <input type="file" class="form-control" id="foto_kk" wire:model="foto_kk">
+                            @error('foto_kk') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputAlamat">Pasphoto 4x6</label>
+                            <input type="file" class="form-control" id="pas_foto" wire:model="pas_foto">
+                            @error('pas_foto') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>  
+
+                        <div class="form-group col-md-6">
+                            <label>Koordinator Nama</label>
+                            <input type="text" class="form-control" wire:model="koordinator_nama">
+                            @error('koordinator_nama') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>  
+                        <div class="form-group col-md-6">
+                            <label>Koordinator NIK</label>
+                            <input type="text" class="form-control" wire:model="koordinator_nik">
+                            @error('koordinator_nik') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>  
+                        <div class="form-group col-md-6">
+                            <label>Koordinator HP</label>
+                            <input type="text" class="form-control" wire:model="koordinator_hp">
+                            @error('koordinator_nama') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>  
+                        <div class="form-group col-md-6">
+                            <label>Koordinator Alamat</label>
+                            <input type="text" class="form-control" wire:model="koordinator_alamat">
+                            @error('koordinator_alamat') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>  
+                        
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputAlamat">Foto KTP</label>
-                        <input type="file" class="form-control" id="foto_ktp" wire:model="foto_ktp">
-                        @error('foto_ktp') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputAlamat">Foto KK</label>
-                        <input type="file" class="form-control" id="foto_kk" wire:model="foto_kk">
-                        @error('foto_kk') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputAlamat">Pasphoto 4x6</label>
-                        <input type="file" class="form-control" id="pas_foto" wire:model="pas_foto">
-                        @error('pas_foto') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>  
                 </div>
                 <div class="col-12"><br /></div>
                 <div class="col-md-6">

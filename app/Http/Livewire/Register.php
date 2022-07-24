@@ -74,7 +74,7 @@ class Register extends Component
         'email' => 'required|string',
 		'phone_number' => 'required',
 		'iuran_tetap'=>'required',
-		'sumbangan'=>'required',
+		// 'sumbangan'=>'required',
 		'uang_pendaftaran'=>'required|numeric|min:50000',
     ];
 
@@ -187,7 +187,7 @@ class Register extends Component
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			'sumbangan'=>'required',
+			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'email' => 'required',
@@ -243,7 +243,7 @@ class Register extends Component
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			'sumbangan'=>'required',
+			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'email' => 'required',
@@ -355,8 +355,10 @@ class Register extends Component
 		
 		if($this->referal_code !="") {
 			$kord = User::where('referal_code',$this->referal_code)->first();
-			$dataMember = UserMember::where('user_id',$kord->id)->first();
-			$data->koordinator_id = $dataMember->id;
+			if($kord){
+				$dataMember = UserMember::where('user_id',$kord->id)->first();
+				$data->koordinator_id = $dataMember->id;
+			}
 		}
 		$data->save();
 

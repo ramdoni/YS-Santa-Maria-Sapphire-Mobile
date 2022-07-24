@@ -65,7 +65,7 @@ class Edit extends Component
     public $foto_ktpwaris2Update;
     public $file_konfirmasiUpdate;
     public $city_lainnya, $hubungananggota1_lainnya, $hubungananggota2_lainnya;
-
+    public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat;
 
     protected $rules = [
         'name' => 'required|string',
@@ -132,6 +132,10 @@ class Edit extends Component
         $this->total_sumbangan= $this->data->total_sumbangan; 
         $this->total = $this->data->total_pembayaran;
         $this->uang_pendaftaran = $this->data->uang_pendaftaran;
+        $this->koordinator_nama = $this->data->koordinator_nama;
+		$this->koordinator_nik = $this->data->koordinator_nik;
+		$this->koordinator_hp = $this->data->koordinator_hp;
+		$this->koordinator_alamat = $this->data->koordinator_alamat;
         
         $payment_date = Iuran::where(['iuran_pertama'=>1,'user_member_id'=>$this->data->id])->first();
         if($payment_date) $this->payment_date = $payment_date->payment_date; 
@@ -139,10 +143,15 @@ class Edit extends Component
         $this->file_konfirmasi = $this->data->file_konfirmasi;
         $this->user_id = $this->data->user_id;
         $this->region = $this->data->region;
+
+        $user_recomendation = UserMember::find($this->user_id_recomendation);
+		if($user_recomendation) $this->user_id_recomendation = $user_recomendation->no_anggota_platinum;
     }
 
-    public function save(){
+    public function save()
+    {
         $this->validate();
+        
         $this->data->no_form = $this->form_no;
         $this->data->Id_Ktp = $this->Id_Ktp;
         $this->data->name = $this->name;
@@ -153,14 +162,13 @@ class Edit extends Component
         $this->data->address = $this->address;
         $this->data->city = $this->city;
         $this->data->city_lainnya = $this->city_lainnya;
-        /*
-        $dataMember = \App\Models\UserMember::where('user_id',$this->koordinator_id)->first();
-        if($dataMember) $this->data->koordinator_id = $dataMember->id;
-        */
         $this->data->koordinator_id = $this->koordinator_id;
         $this->data->jenis_kelamin = $this->jenis_kelamin;
         $this->data->phone_number = $this->phone_number;
         $this->data->blood_type = $this->blood_type;
+
+        $user_recomendation = UserMember::where('no_anggota_platinum',$this->user_id_recomendation)->first();
+		if($user_recomendation) $this->data->user_id_recomendation = $user_recomendation->id;
 
         if($this->foto_ktpUpdate!=""){
             $this->validate([
@@ -226,6 +234,10 @@ class Edit extends Component
         $this->data->blood_typewaris2 = $this->blood_typewaris2;
         $this->data->hubungananggota2 = $this->hubungananggota2;
         $this->data->hubungananggota2_lainnya= $this->hubungananggota2_lainnya;
+        $this->data->koordinator_nama = $this->koordinator_nama;
+		$this->data->koordinator_nik = $this->koordinator_nik;
+		$this->data->koordinator_hp = $this->koordinator_hp;
+		$this->data->koordinator_alamat = $this->koordinator_alamat;
 
         if($this->foto_ktpwaris2Update!=""){
             $this->validate([

@@ -7,7 +7,7 @@
             <div class="body">
                 <div class="number">
                     <h6>Anggota Aktif</h6>
-                    <span>{{format_idr(\App\Models\UserMember::where('status',2)->count())}}</span>
+                    <span>{{format_idr(\App\Models\UserMember::where('status',2)->where('is_non_anggota',0)->count())}}</span>
                 </div>
                 {{-- <small class="text-muted">19% compared to last week</small> --}}
             </div>

@@ -821,6 +821,7 @@ class ComposerStaticInit8eb009ed5d020576fc59907df4023d0b
         'App\\Http\\Livewire\\UserMember\\Approval' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/Approval.php',
         'App\\Http\\Livewire\\UserMember\\DetailMeninggal' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/DetailMeninggal.php',
         'App\\Http\\Livewire\\UserMember\\Edit' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/Edit.php',
+        'App\\Http\\Livewire\\UserMember\\Editable' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/Editable.php',
         'App\\Http\\Livewire\\UserMember\\Index' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/Index.php',
         'App\\Http\\Livewire\\UserMember\\Insert' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/Insert.php',
         'App\\Http\\Livewire\\UserMember\\Insert1' => __DIR__ . '/../..' . '/app/Http/Livewire/UserMember/Insert1.php',

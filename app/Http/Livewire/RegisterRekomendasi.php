@@ -159,7 +159,7 @@ class RegisterRekomendasi extends Component
             'name_kta' => 'required|string',
             'phone_number' => 'required',
             'iuran_tetap'=>'required',
-            'sumbangan'=>'required',
+            // 'sumbangan'=>'required',
             'uang_pendaftaran'=>'required|numeric|min:50000',
             'tanggal_lahir' => 'required',
             // 'tanggal_diterima' => 'required',

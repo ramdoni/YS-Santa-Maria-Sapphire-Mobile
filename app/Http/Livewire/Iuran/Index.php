@@ -22,7 +22,7 @@ class Index extends Component
         $data = UserMember::select(["user_member.id","user_member.name","user_member.koordinator_id","user_member.Id_Ktp",
                                     "user_member.no_anggota_platinum","user_member.tanggal_diterima",\DB::raw('user_member_koordinator.name as koordinator_name')])
                                 ->leftJoin(\DB::raw('user_member as user_member_koordinator'),'user_member_koordinator.id','=','user_member.koordinator_id')
-                                ->where('user_member.is_non_anggota',0)
+                                ->where(['user_member.is_non_anggota'=>0,'user_member.status'=>2])
                                 ->orderBy('user_member.id','DESC');
 
         if($this->koordinator_id) $data->where('user_member.koordinator_id',$this->koordinator_id);

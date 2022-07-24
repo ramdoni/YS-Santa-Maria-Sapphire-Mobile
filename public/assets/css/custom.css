@@ -39,3 +39,7 @@
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: 5px !important;
 }
+.editable a {
+    text-decoration: none;
+    border-bottom: dashed 1px #0088cc;
+}

@@ -7,7 +7,6 @@
                 <div class="col-md-2">
                     <select class="form-control" wire:model="koordinator_id">
                         <option value=""> --- Koordinator --- </option>
-                        <!-- <option value="1">Kantor</option> -->
                         @foreach(\App\Models\UserMember::select('user_member.*')->join('users','users.id','=','user_member.user_id')->where('users.user_access_id','=',3)->orderBy('user_member.name','ASC')->get() as $koordinator)
                         <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
                         @endforeach
@@ -33,7 +32,6 @@
                         <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
                         <span class="sr-only">{{ __('Loading...') }}</span>
                     </span>
-                    <!-- <a href="javascript:;" data-toggle="modal" data-target="#modal_upload" class="ml-2" title="Upload Excel"><i class="fa fa-upload"></i> Upload</a> -->
                 </div>
             </div>
             <div class="body pt-0">
@@ -56,9 +54,7 @@
                                 <th>Tanggal Meninggal</th>
                                 <th>Santunan Pelayanan</th>
                                 <th>Santunan Uang Duka</th>
-                                <!-- <th>Asuransi</th> -->
                                 <th>Pembayaran Pendaftaran</th>
-                                <th class="text-center">Klaim</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -67,24 +63,16 @@
                             @foreach($data as $k => $item)
                             <tr>
                                 <td style="width: 50px;">{{$number}}</td>
-                                <td>
-                                    <!-- @if($item->koordinator_id==1)
-                                        Kantor
-                                    @else
-                                        {{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}
-                                    @endif -->
-                                    {{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}
-
-                                </td>
+                                <td>{{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}</td>
                                 <td>{{$item->no_anggota_platinum?$item->no_anggota_platinum:'-'}}</td>
                                 <td><a href="{{route('user-member.edit',['id'=>$item->id])}}" class="{{$item->status==4?"text-danger" : ""}}">{{$item->name}}</a></td>
                                 <td>{{$item->phone_number}}</td>
                                 <td>{{$item->Id_Ktp}}</td>
-                                <td>{{$item->jenis_kelamin}}</td>
+                                <td>@livewire('user-member.editable',['field'=>'jenis_kelamin','data'=>$item],key($item->id))</td>
                                 <td>{{$item->tempat_lahir}} - {{$item->tanggal_lahir ? date('d M Y',strtotime($item->tanggal_lahir)) : ''}}</td>
                                 <td class="px-0"><span class="text-success"> {{$item->tanggal_lahir ? hitung_umur($item->tanggal_lahir) .' thn' : ''}} </span></td>
-                                <td>{{$item->agama}}</td>
-                                <td>
+                                <td>@livewire('user-member.editable',['field'=>'agama','data'=>$item],key($item->id))</td>
+                                <td> 
                                     @switch($item->status)
                                         @case(0)
                                             <a href="javascript:void(0)" class="badge badge-warning">Inactive</a>
@@ -94,23 +82,15 @@
                                         @break
                                         @case(2)
                                             <?php
-                                                $countrec = App\Models\UserMember::where('user_id_recomendation', $item->id)->get();
-                                                // echo count($countrec);
-                                            
-                                                if(hitung_umur($item->tanggal_lahir) >=60 and hitung_umur($item->tanggal_lahir) <=64){
-                                                    $recmember = '1';
-                                                }
-                                                if(hitung_umur($item->tanggal_lahir) >=65 and hitung_umur($item->tanggal_lahir) <=74){
-                                                    $recmember = '3';
-                                                }
-                                                if(hitung_umur($item->tanggal_lahir) >=75){
-                                                    $recmember = '5';
-                                                }
+                                                $countrec = $item->user_rekomendasi_count;
+                                                $recmember = 0;
+                                                if(hitung_umur($item->tanggal_lahir) >60 and hitung_umur($item->tanggal_lahir) <=64) $recmember = 1;
+                                                if(hitung_umur($item->tanggal_lahir) >=65 and hitung_umur($item->tanggal_lahir) <=74) $recmember = 3;
+                                                if(hitung_umur($item->tanggal_lahir) >=75) $recmember = 5;
                                             ?>
-                                            
                                             @if(hitung_umur($item->tanggal_lahir) >= 60)
-                                                @if($recmember < $countrec)
-                                                    <a href="javascript:void(0)" class="badge badge-warning" data-toggle="tooltip" title="Member Rekomendasi masih kurang!!!">Inactive</a>   
+                                                @if($recmember > $countrec)
+                                                    <a href="javascript:void(0)" class="badge badge-warning" data-toggle="tooltip" title="Perlu menyertakan anggota rekomendasi">Inactive</a>   
                                                 @else
                                                     <a href="javascript:void(0)" wire:click="$emit('modal-konfirmasi-meninggal',{{$item->id}})" class="badge badge-success" title="{{ $item->tanggal_diterima ?  date('d M Y',strtotime($item->tanggal_diterima)):''}}">Active</a>
                                                 @endif
@@ -128,44 +108,12 @@
                                             <span class="badge badge-danger">Keluar</span>
                                         @break
                                     @endswitch
-                                        {{-- {!!status_keanggotaan($item)!!} --}}
-                                    {{-- @if(isset($item->tanggal_diterima))
-                                        {{date('d M Y',strtotime($item->tanggal_diterima))}}
-                                    @endif --}}
                                 </td>
-                                <td>
-                                    <?php 
-                                        $rekomendator = App\Models\UserMember::select('name')->where('id', $item->user_id_recomendation)->first();
-                                        $rekomendator = $rekomendator;
-                                        echo @$rekomendator->name;
-                                    ?>
-                                </td>
+                                <td>{{isset($item->user_rekomendasi->name) ? $item->user_rekomendasi->name : '-'}}</td>
                                 <td><a href="javascript:void(0)" wire:click="$emit('modal-detail-meninggal',{{$item->id}})">{{isset($item->klaim->tgl_kematian) ? date('d-M-Y',strtotime($item->klaim->tgl_kematian)) : ''}}</a></td>
                                 <td>{{isset($item->klaim->santunan_pelayanan) ? format_idr($item->klaim->santunan_pelayanan) : ''}}</td>
                                 <td>{{isset($item->klaim->santunan_uang_duka) ? format_idr($item->klaim->santunan_uang_duka) : ''}}</td>
-                                <td>{!!getAsuransi($item->id)!!}</td>
                                 <td>{!!status_registration_payment($item)!!}</td>
-                                <!-- <td class="text-center">
-                                    @if($item->status==4)
-                                        @if(isset($item->klaim->level_claim) and $item->klaim->level_claim ==3)
-                                            @if($item->klaim->status==0)
-                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#modal_ajukan_klaim" wire:click="$emit('modal-ajuan-klaim',{{$item->id}})" title="Klik disini untuk mengajukan klaim" class="badge badge-danger"><i class="fa fa-plus-square"></i> Ajukan Klaim</a>
-                                            @else
-                                                {!!status_approval_claim($item->klaim)!!}
-                                            @endif
-                                        @endif
-                                    @endif
-
-                                    {{-- @if(status_claim($item) == '0')
-                                        @if($item->klaim == NULL)
-                                            <a href="{{route('user-member.klaim',['id'=>$item->id])}}" data-toggle="tooltip" title="Klik disini untuk mengajukan klaim" class="badge badge-danger"><i class="fa fa-plus-square"></i> Klaim</a>
-                                        @else
-                                            {!!status_approval_claim($item->klaim)!!}
-                                        @endif
-                                    @else
-                                        {!!status_claim($item)!!}
-                                    @endif --}}
-                                </td> -->
                                 <td>
                                     <div class="btn-group" role="group">
                                         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-navicon"></i></a>

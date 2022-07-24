@@ -173,32 +173,23 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
+                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(get_setting('iuran_tetap'))}}</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
-                                <option value=""> --- Minimal 6 Bulan --- </option>
-                                @for($i=6;$i<=40;$i++)
-                                <option>{{$i}}</option>
+                                <option value=""> --- Minimal 3 Bulan --- </option>
+                                @for($i=3;$i<=40;$i++)
+                                    <option>{{$i}}</option>
                                 @endfor
                             </select>
                             @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputAlamat">Sumbangan <strong class="text-danger">Rp. 2.000</strong>  (Rp {{format_idr($total_sumbangan)}})</label>
-                            <select class="form-control" wire:model="sumbangan" wire:change="calculate_">
-                                <option value=""> --- Minimal 6 Bulan --- </option>
-                                @for($i=6;$i<=40;$i++)
-                                <option>{{$i}}</option>
-                                @endfor
-                            </select>
-                            @error('sumbangan') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
                             <label for="exampleInputAlamat">Uang Pendaftaran - Sukarela Minimum <strong class="text-danger">Rp. 50.000</strong></label>
                             <input type="number" class="form-control" wire:model="uang_pendaftaran" wire:input="calculate_">
                             @error('uang_pendaftaran') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
+                    </div>
+                    <div class="row">
+                        
                         <div class="form-group col-md-6">
                             <h5 class="btn btn-outline-danger">Total Rp. {{format_idr($total)}}</h5>
                         </div>

@@ -135,10 +135,10 @@ class Approval extends Component
 	        $user->password = Hash::make('12345');
 	        $user->save();
 
-	    	$counting =  get_setting('counting_no_anggota')+1;
-		    update_setting('counting_no_anggota',$counting);
+	    	$counting =  get_setting('counting_no_anggota_new')+1;
+		    update_setting('counting_no_anggota_new',$counting);
 
-            $no_anggota = date('ym').str_pad($counting,5, '0', STR_PAD_LEFT);
+            $no_anggota = date('ym').str_pad($counting,6, '0', STR_PAD_LEFT);
 
 	        $this->data->no_anggota_platinum = $no_anggota;
         	$this->data->tanggal_diterima = date('Y-m-d');
@@ -168,13 +168,13 @@ class Approval extends Component
     
     public function approve()
     {
-		$counting =  get_setting('counting_no_anggota')+1;
+		$counting =  get_setting('counting_no_anggota_new')+1;
 
         $this->data->ketua_approval = 1;
         $this->data->status=2;
-        $this->data->no_anggota_platinum = date('my').str_pad($counting,5, '0', STR_PAD_LEFT);
+        $this->data->no_anggota_platinum = date('ym').str_pad($counting,6, '0', STR_PAD_LEFT);
         
-		update_setting('counting_no_anggota',$counting);
+		update_setting('counting_no_anggota_new',$counting);
 
         $this->data->tanggal_diterima = date('Y-m-d');
         $this->data->masa_tenggang = date('Y-m-d',strtotime("+5 months"));
@@ -196,12 +196,13 @@ class Approval extends Component
         $this->data->save();
 
         $message  = "Kepada Yth Ibu/Bpak {$this->data->name},\n\nTerima kasih telah mendaftar sebagai Anggota di Yayasan Kematian Santa Maria, \nNomor Anggota : *{$this->data->no_anggota_platinum}*\n. Silahkan login dengan menggunakan username :{$this->data->no_anggota_platinum},\n dan password {$password} \n";
-        \Mail::to($data->email)->send(new \App\Mail\GeneralEmail("[YS SANTA MARIA] - Pendaftaran ". $this->data->no_form,$message));    
+        \Mail::to($this->data->email)->send(new \App\Mail\GeneralEmail("[YS SANTA MARIA] - Pendaftaran ". $this->data->no_form,$message));    
 
         session()->flash('message-success',__('Data dengan No Form : '. $this->data->no_form .' berhasil di Approve'));
 
         return redirect()->to('ketua-yayasan');
     }
+
     public function reject()
     {
         $this->data->ketua_approval = 1;
@@ -210,11 +211,10 @@ class Approval extends Component
         $this->data->save();
 
         $message = 'Mohon maaf, pengajuan keanggotaan Yayasan Kematian Santa Maria anda ditolak.';
-        \Mail::to($data->email)->send(new \App\Mail\GeneralEmail("[YS SANTA MARIA] - Pendaftaran ". $this->data->no_form,$message));    
+        \Mail::to($this->data->email)->send(new \App\Mail\GeneralEmail("[YS SANTA MARIA] - Pendaftaran ". $this->data->no_form,$message));    
 
         session()->flash('message-success',__('Data dengan No Form : '. $this->data->no_form .' berhasil di Reject'));
 
         return redirect()->to('ketua-yayasan');
     }
-
 }

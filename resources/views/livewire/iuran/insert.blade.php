@@ -13,11 +13,9 @@
                             <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. 30.000</strong></label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
                                 <option value=""> --- Minimal 1 Bulan --- </option>
-                                <option>1</option>
-                                <option>3</option>
-                                <option>6</option>
-                                <option>9</option>
-                                <option>12</option>
+                                @for($i=1;$i<=12;$i++)
+                                    <option>{{$i}}</option>
+                                @endfor
                             </select>
                             @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>

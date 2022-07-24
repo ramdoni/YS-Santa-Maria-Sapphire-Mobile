@@ -105,6 +105,7 @@ return array(
     'App\\Http\\Livewire\\UserMember\\Approval' => $baseDir . '/app/Http/Livewire/UserMember/Approval.php',
     'App\\Http\\Livewire\\UserMember\\DetailMeninggal' => $baseDir . '/app/Http/Livewire/UserMember/DetailMeninggal.php',
     'App\\Http\\Livewire\\UserMember\\Edit' => $baseDir . '/app/Http/Livewire/UserMember/Edit.php',
+    'App\\Http\\Livewire\\UserMember\\Editable' => $baseDir . '/app/Http/Livewire/UserMember/Editable.php',
     'App\\Http\\Livewire\\UserMember\\Index' => $baseDir . '/app/Http/Livewire/UserMember/Index.php',
     'App\\Http\\Livewire\\UserMember\\Insert' => $baseDir . '/app/Http/Livewire/UserMember/Insert.php',
     'App\\Http\\Livewire\\UserMember\\Insert1' => $baseDir . '/app/Http/Livewire/UserMember/Insert1.php',

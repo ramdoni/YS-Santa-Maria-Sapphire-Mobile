@@ -25,17 +25,19 @@ class Login extends Component
                 'password' => 'required',
             ],
             [
-                'email.required'=>'NIK / No Anggota is required'
+                'email.required'=>'No Anggota is required'
             ]
         );
 
         if(is_numeric($this->email)){ 
-            $credentials = ['nik'=>$this->email,'password'=>$this->password]; // Login with NIK
+            $credentials = ['username'=>$this->email,'password'=>$this->password]; // Login with NIK
         }else{
             $credentials = ['email'=>$this->email,'password'=>$this->password];
         }
 
         if($this->type_login==1){
+            // dd(\Hash::make($this->password));
+            // dd($credentials);
             if (Auth::attempt($credentials,$this->remember_me)) {
                 // Authentication passed...
                 return redirect('/');

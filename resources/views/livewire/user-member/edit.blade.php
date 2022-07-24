@@ -111,16 +111,32 @@
                         @error('blood_type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>{{ __('Koordinator')}}</label>
-                    <select class="form-control" wire:model="koordinator_id">
-                        <option value=""> --- Select Koordinator --- </option>
-                        <!-- <option value="1">Kantor</option> -->
-                        @foreach(\App\Models\UserMember::join('users','users.id','=','user_member.user_id')->where('users.user_access_id',3)->select('user_member.*')->orderBy('user_member.name','ASC')->get() as $koordinator)
-                            <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
-                        @endforeach
-                    </select>
-                    @error('koordinator_id') <span class="text-danger">{{ $message }}</span> @enderror
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>{{ __('Koordinator')}}</label>
+                        <select class="form-control" wire:model="koordinator_id">
+                            <option value=""> --- Select Koordinator --- </option>
+                            @foreach(\App\Models\UserMember::join('users','users.id','=','user_member.user_id')->where('users.user_access_id',3)->select('user_member.*')->orderBy('user_member.name','ASC')->get() as $koordinator)
+                                <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('koordinator_id') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label>User Rekomendator</label>
+                        <input list="rekomendator" type="text" class="form-control" id="user_id_recomendation" name="user_id_recomendation" wire:model="user_id_recomendation">
+                        <datalist id="rekomendator">
+                            @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
+                                @if(hitung_umur($item->tanggal_lahir) < 60)
+                                    continue;
+                                @else
+                                    <option value="{{ $item->no_anggota_platinum }}">{{ $item->name }}</option> 
+                                @endif
+                            
+                            @endforeach
+                        </datalist>
+                        @error('user_rekomendator') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
@@ -162,7 +178,7 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>{{ __('Payment Date')}}</label>
-                        <input type="date" class="form-control" wire:model="payment_date" readonly="true"/>
+                        <input type="date" class="form-control" w:model="payment_date" readonly="true"/>
                         @error('payment_date')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -178,7 +194,7 @@
                     <hr class="mt-0" />
                     <p class="mb-0">Uang Pendaftaran - Sukarela <strong class="text-danger float-right">Rp. {{format_idr($uang_pendaftaran)}}</strong></p>           
                     <hr class="mt-0" />
-                    <p>Total <strong class="text-danger float-right">Rp. {{format_idr($total)}}</strong></p>
+                    <p>Total <strong class="text-danger float-right">Rp. {{format_idr($uang_pendaftaran+($iuran_tetap*get_setting('iuran_tetap')))}}</strong></p>
                 </div>
                 
 <!--

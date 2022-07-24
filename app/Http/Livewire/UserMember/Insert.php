@@ -71,9 +71,7 @@ class Insert extends Component
 	public $koordinator_id1,$koordinator_id2,$messageKtp1,$messageKtp2;
 	public $extend_register3,$extend_register4,$extend_register5;
 	public $validate_form_1 = false,$validate_form_2=false,$validate_form_3=false,$validate_form_4=false,$validate_form_5=false;
-
-	
-
+	public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat;
 	protected $listeners = ['save-all'=>'save_all'];
 
 	public function render()
@@ -572,7 +570,6 @@ class Insert extends Component
 		$counting =  get_setting('counting_no_anggota_new')+1;
 		update_setting('counting_no_anggota_new',$counting);
 
-		// $no_anggota = date('ym',strtotime($this->tanggal_diterima)).str_pad($counting,5, '0', STR_PAD_LEFT);
 		$no_anggota = date('ym',strtotime($this->tanggal_diterima)).str_pad($counting,6, '0', STR_PAD_LEFT);
 		
     	$user = new User();
@@ -608,7 +605,9 @@ class Insert extends Component
      	$data->name_waris1 = $this->name_waris1;
      	$data->tempat_lahirwaris1 = $this->tempat_lahirwaris1;
      	$data->agama = $this->agama;
-     	$data->user_id_recomendation = $this->user_id_recomendation;
+		
+		$user_recomendation = UserMember::where('no_anggota_platinum',$this->user_id_recomendation)->first();
+		if($user_recomendation) $data->user_id_recomendation = $user_recomendation->id;
 
 		if($this->tanggal_lahirwaris1) $data->tanggal_lahirwaris1 = $this->tanggal_lahirwaris1;
 
@@ -696,6 +695,10 @@ class Insert extends Component
         $data->status_pembayaran = 1; // pembayaran pendaftaran lunas
 		$data->koordinator_id = $this->koordinator_id;		
         $data->user_id = $user->id;
+		$data->koordinator_nama = $this->koordinator_nama;
+		$data->koordinator_nik = $this->koordinator_nik;
+		$data->koordinator_hp = $this->koordinator_hp;
+		$data->koordinator_alamat = $this->koordinator_alamat;
 		$data->save();
 
 		// Iuran
