@@ -70,6 +70,10 @@ class Edit extends Component
     protected $rules = [
         'name' => 'required|string',
         'name_kta' => 'required|string',
+        'koordinator_name' => 'required',
+        'koordinator_nik' => 'required',
+        'koordinator_hp' => 'required',
+        'koordinator_alamat' => 'required',
         //'email' => 'required|string',
     ];
 

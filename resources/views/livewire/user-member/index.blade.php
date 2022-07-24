@@ -63,7 +63,7 @@
                             @foreach($data as $k => $item)
                             <tr>
                                 <td style="width: 50px;">{{$number}}</td>
-                                <td>{{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}</td>
+                                <td>{{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:$item->koordinator_nama}}</td>
                                 <td>{{$item->no_anggota_platinum?$item->no_anggota_platinum:'-'}}</td>
                                 <td><a href="{{route('user-member.edit',['id'=>$item->id])}}" class="{{$item->status==4?"text-danger" : ""}}">{{$item->name}}</a></td>
                                 <td>{{$item->phone_number}}</td>
