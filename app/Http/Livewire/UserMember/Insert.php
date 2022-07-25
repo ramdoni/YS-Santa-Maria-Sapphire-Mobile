@@ -552,7 +552,7 @@ class Insert extends Component
 			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
-			'koordinator_id' => 'required',
+			// 'koordinator_id' => 'required',
 			'tanggal_diterima' => 'required'
 		];
 		$message_rules = [
