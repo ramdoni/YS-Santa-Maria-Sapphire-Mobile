@@ -162,7 +162,6 @@ class UserController extends Controller
 								})
 							],
 			'name' => 'required|string',
-			// 'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
 			'sumbangan'=>'required',
@@ -279,11 +278,11 @@ class UserController extends Controller
             $data->foto_ktpwaris2 = $namefotoktpwaris2;
 		}
 		$data->iuran_tetap = $r->iuran_tetap;
-		$data->total_iuran_tetap = $r->iuranTetap*8000;
+		$data->total_iuran_tetap = $r->iuran_tetap*get_setting('iuran_tetap');
 		$data->sumbangan = $r->sumbangan;
 		$data->total_sumbangan = $r->sumbangan*2000;
 		$data->uang_pendaftaran = $r->uang_pendaftaran;
-		$data->total_pembayaran = ($r->sumbangan*2000)+( $r->iuranTetap*8000)+$r->uang_pendaftaran;
+		$data->total_pembayaran = ($r->sumbangan*2000)+( $r->iuran_tetap*get_setting('iuran_tetap'))+$r->uang_pendaftaran;
 		
 		if($r->referal_code !="") {
 			$kord = User::where('referal_code',$r->referal_code)->first();

@@ -7,8 +7,12 @@
                 <div class="col-md-2">
                     <select class="form-control" wire:model="koordinator_id">
                         <option value=""> --- Koordinator --- </option>
-                        @foreach(\App\Models\UserMember::select('user_member.*')->join('users','users.id','=','user_member.user_id')->where('users.user_access_id','=',3)->orderBy('user_member.name','ASC')->get() as $koordinator)
-                        <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
+                        <!-- @foreach(\App\Models\UserMember::select('user_member.*')->join('users','users.id','=','user_member.user_id')->where('users.user_access_id','=',3)->orderBy('user_member.name','ASC')->get() as $koordinator)
+                            <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
+                        @endforeach -->
+                        @foreach(\App\Models\UserMember::groupBy('koordinator_nama')->get() as $koordinator)
+                            @if($koordinator->koordinator_nama=="") @continue @endif
+                            <option>{{$koordinator->koordinator_nama}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -63,15 +67,21 @@
                             @foreach($data as $k => $item)
                             <tr>
                                 <td style="width: 50px;">{{$number}}</td>
-                                <td>{{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}</td>
+                                <td>
+                                    @if($item->koordinator_nama)
+                                        {{$item->koordinator_nama}}
+                                    @else
+                                        {{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}
+                                    @endif
+                                </td>
                                 <td>{{$item->no_anggota_platinum?$item->no_anggota_platinum:'-'}}</td>
                                 <td><a href="{{route('user-member.edit',['id'=>$item->id])}}" class="{{$item->status==4?"text-danger" : ""}}">{{$item->name}}</a></td>
                                 <td>{{$item->phone_number}}</td>
                                 <td>{{$item->Id_Ktp}}</td>
-                                <td>@livewire('user-member.editable',['field'=>'jenis_kelamin','data'=>$item],key($item->id))</td>
+                                <td>@livewire('user-member.editable',['field'=>'jenis_kelamin','data'=>$item],key('jenis_kelamin_'.$item->id))</td>
                                 <td>{{$item->tempat_lahir}} - {{$item->tanggal_lahir ? date('d M Y',strtotime($item->tanggal_lahir)) : ''}}</td>
                                 <td class="px-0"><span class="text-success"> {{$item->tanggal_lahir ? hitung_umur($item->tanggal_lahir) .' thn' : ''}} </span></td>
-                                <td>@livewire('user-member.editable',['field'=>'agama','data'=>$item],key($item->id))</td>
+                                <td>@livewire('user-member.editable',['field'=>'agama','data'=>$item],key('agama_'.$item->id))</td>
                                 <td> 
                                     @switch($item->status)
                                         @case(0)
@@ -82,7 +92,7 @@
                                         @break
                                         @case(2)
                                             <?php
-                                                $countrec = $item->user_rekomendasi_count;
+                                                $countrec = $item->rekomendasi__count;
                                                 $recmember = 0;
                                                 if(hitung_umur($item->tanggal_lahir) >60 and hitung_umur($item->tanggal_lahir) <=64) $recmember = 1;
                                                 if(hitung_umur($item->tanggal_lahir) >=65 and hitung_umur($item->tanggal_lahir) <=74) $recmember = 3;

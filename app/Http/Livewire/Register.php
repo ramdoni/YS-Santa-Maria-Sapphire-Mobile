@@ -243,11 +243,26 @@ class Register extends Component
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'email' => 'required',
 		];
+
+		if($this->foto_ktp!="") $rules['foto_ktp'] = 'image:max:1024'; // 1Mb Max;
+		if($this->foto_kk!="") $rules['foto_kk'] = 'image:max:1024'; // 1Mb Max;
+		if($this->pas_foto!="") $rules['pas_foto'] = 'image:max:1024'; // 1Mb Max;
+		if($this->foto_ktpwaris1!="") $rules['foto_ktpwaris1'] = 'image:max:1024'; // 1Mb Max;
+		if($this->foto_ktpwaris2!="") $rules['foto_ktpwaris2'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend1_foto_ktp!="") $rules['extend1_foto_ktp'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend1_foto_kk!="") $rules['extend1_foto_kk'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend1_pas_foto!="") $rules['extend1_pas_foto'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend1_foto_ktpwaris1!="") $rules['extend1_foto_ktpwaris1'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend1_foto_ktpwaris2!="") $rules['extend1_foto_ktpwaris2'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend2_foto_kk!="") $rules['extend2_foto_kk'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend2_pas_foto!="") $rules['extend2_pas_foto'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend2_foto_ktpwaris1!="") $rules['extend2_foto_ktpwaris1'] = 'image:max:1024'; // 1Mb Max;
+		if($this->extend2_foto_ktpwaris2!="") $rules['extend2_foto_ktpwaris2'] = 'image:max:1024'; // 1Mb Max;
+
 		$message_rules = [
 			"Id_Ktp.unique" => "Maaf No KTP sudah digunakan silahkan dicoba dengan No KTP yang lain.",
 			"uang_pendaftaran.min" => "Minimal uang pendaftaran Rp. 50.000,-"
@@ -306,42 +321,27 @@ class Register extends Component
      	$data->hubungananggota2_lainnya = $this->hubungananggota2_lainnya;
 	
         if($this->foto_ktp!=""){
-            $this->validate([
-                'foto_ktp' => 'image:max:1024', // 1Mb Max
-            ]);
             $namektp = 'foto_ktp'.date('Ymdhis').'.'.$this->foto_ktp->extension();
             $this->foto_ktp->storePubliclyAs('public',$namektp);
             $data->foto_ktp = $namektp;
         }
 
         if($this->foto_kk!=""){
-            $this->validate([
-                'foto_kk' => 'image:max:1024', // 1Mb Max
-            ]);
             $namekk = 'foto_kk'.date('Ymdhis').'.'.$this->foto_kk->extension();
             $this->foto_kk->storePubliclyAs('public',$namekk);
             $data->foto_kk = $namekk;
         }
         if($this->pas_foto!=""){
-            $this->validate([
-                'pas_foto' => 'image:max:1024', // 1Mb Max
-            ]);
             $namepasfoto = 'pas_foto'.date('Ymdhis').'.'.$this->pas_foto->extension();
             $this->pas_foto->storePubliclyAs('public',$namepasfoto);
             $data->pas_foto = $namepasfoto;
         }
         if($this->foto_ktpwaris1!=""){
-            $this->validate([
-                'foto_ktpwaris1' => 'image:max:1024', // 1Mb Max
-            ]);
             $namefotoktpwaris1 = 'foto_ktpwaris1'.date('Ymdhis').'.'.$this->foto_ktpwaris1->extension();
             $this->foto_ktpwaris1->storePubliclyAs('public',$namefotoktpwaris1);
             $data->foto_ktpwaris1 = $namefotoktpwaris1;
         }
         if($this->foto_ktpwaris2!=""){
-            $this->validate([
-                'foto_ktpwaris2' => 'image:max:1024', // 1Mb Max
-            ]);
             $namefotoktpwaris2 = 'foto_ktpwaris2'.date('Ymdhis').'.'.$this->foto_ktpwaris2->extension();
             $this->foto_ktpwaris2->storePubliclyAs('public',$namefotoktpwaris2);
             $data->foto_ktpwaris2 = $namefotoktpwaris2;
@@ -403,45 +403,30 @@ class Register extends Component
 	     	$dataExtends1->hubungananggota2_lainnya = $this->extend1_hubungananggota2_lainnya;
 
 	        if($this->extend1_foto_ktp!=""){
-	            $this->validate([
-	                'extend1_foto_ktp' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend1_namektp = 'foto_ktp'.date('Ymdhis').'.'.$this->extend1_foto_ktp->extension();
 	            $this->extend1_foto_ktp->storePubliclyAs('public',$extend1_namektp);
 	            $dataExtends1->foto_ktp = $extend1_namektp;
 	        }
 
 	        if($this->extend1_foto_kk!=""){
-	            $this->validate([
-	                'extend1_foto_kk' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend1_namekk = 'foto_kk'.date('Ymdhis').'.'.$this->extend1_foto_kk->extension();
 	            $this->extend1_foto_kk->storePubliclyAs('public',$extend1_namekk);
 	            $dataExtends1->foto_kk = $extend1_namekk;
 	        }
 
 	        if($this->extend1_pas_foto!=""){
-	            $this->validate([
-	                'extend1_pas_foto' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend1_namepasfoto = 'pas_foto'.date('Ymdhis').'.'.$this->extend1_pas_foto->extension();
 	            $this->extend1_pas_foto->storePubliclyAs('public',$extend1_namepasfoto);
 	            $dataExtends1->pas_foto = $extend1_namepasfoto;
 	        }
 
 	        if($this->extend1_foto_ktpwaris1!=""){
-	            $this->validate([
-	                'extend1_foto_ktpwaris1' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend1_namefotoktpwaris1 = 'foto_ktpwaris1'.date('Ymdhis').'.'.$this->extend1_foto_ktpwaris1->extension();
 	            $this->extend1_foto_ktpwaris1->storePubliclyAs('public',$extend1_namefotoktpwaris1);
 	            $dataExtends1->foto_ktpwaris1 = $extend1_namefotoktpwaris1;
 	        }
 
 	        if($this->extend1_foto_ktpwaris2!=""){
-	            $this->validate([
-	                'extend1_foto_ktpwaris2' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend1_namefotoktpwaris2 = 'foto_ktpwaris2'.date('Ymdhis').'.'.$this->extend1_foto_ktpwaris2->extension();
 	            $this->extend1_foto_ktpwaris2->storePubliclyAs('public',$extend1_namefotoktpwaris2);
 	            $dataExtends1->foto_ktpwaris2 = $extend1_namefotoktpwaris2;
@@ -497,42 +482,27 @@ class Register extends Component
 	     	$dataExtends2->hubungananggota2_lainnya = $this->extend2_hubungananggota2_lainnya;
 
 	        if($this->extend2_foto_ktp!=""){
-	            $this->validate([
-	                'extend2_foto_ktp' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend2_namektp = 'foto_ktp'.date('Ymdhis').'.'.$this->extend2_foto_ktp->extension();
 	            $this->extend2_foto_ktp->storePubliclyAs('public',$extend2_namektp);
 	            $dataExtends2->foto_ktp = $extend2_namektp;
 	        }
 
 	        if($this->extend2_foto_kk!=""){
-	            $this->validate([
-	                'extend2_foto_kk' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend2_namekk = 'foto_kk'.date('Ymdhis').'.'.$this->extend2_foto_kk->extension();
 	            $this->extend2_foto_kk->storePubliclyAs('public',$extend2_namekk);
 	            $dataExtends2->foto_kk = $extend1_namekk;
 	        }
 	        if($this->extend2_pas_foto!=""){
-	            $this->validate([
-	                'extend2_pas_foto' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend2_namepasfoto = 'pas_foto'.date('Ymdhis').'.'.$this->extend2_pas_foto->extension();
 	            $this->extend2_pas_foto->storePubliclyAs('public',$extend2_namepasfoto);
 	            $dataExtends2->pas_foto = $extend2_namepasfoto;
 	        }
 	        if($this->extend2_foto_ktpwaris1!=""){
-	            $this->validate([
-	                'extend2_foto_ktpwaris1' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend2_namefotoktpwaris1 = 'foto_ktpwaris1'.date('Ymdhis').'.'.$this->extend2_foto_ktpwaris1->extension();
 	            $this->extend2_foto_ktpwaris1->storePubliclyAs('public',$extend2_namefotoktpwaris1);
 	            $dataExtends2->foto_ktpwaris1 = $extend2_namefotoktpwaris1;
 	        }
 	        if($this->extend2_foto_ktpwaris2!=""){
-	            $this->validate([
-	                'extend2_foto_ktpwaris2' => 'image:max:1024', // 1Mb Max
-	            ]);
 	            $extend2_namefotoktpwaris2 = 'foto_ktpwaris2'.date('Ymdhis').'.'.$this->extend2_foto_ktpwaris2->extension();
 	            $this->extend2_foto_ktpwaris2->storePubliclyAs('public',$extend2_namefotoktpwaris2);
 	            $dataExtends2->foto_ktpwaris2 = $extend2_namefotoktpwaris2;

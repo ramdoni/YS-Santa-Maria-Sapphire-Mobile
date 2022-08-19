@@ -7,8 +7,9 @@
                 <div class="col-md-3" wire:ignore>
                     <select class="form-control select_koordinator">
                         <option value=""> --- Koordinator --- </option>
-                        @foreach ($koordinator as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @foreach(\App\Models\UserMember::groupBy('koordinator_nama')->get() as $koordinator)
+                            @if($koordinator->koordinator_nama=="") @continue @endif
+                            <option>{{$koordinator->koordinator_nama}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -64,14 +65,14 @@
                         @foreach ($data as $k => $item)
                             @if($item->id ==7252 || $item->id ==12) @continue @endif
                             <tr>
-                                <td class="text-center" wire:ignore>
+                                <td class="text-center">
                                     @livewire('iuran.check-id',['data'=>$item->id],key($item->id.date('Ymd')))
                                 </td>
                                 <td>
-                                    @if ($item->koordinator_id == 1)
-                                        Kantor
+                                    @if($item->koordinator_nama)
+                                        {{$item->koordinator_nama}}
                                     @else
-                                        {{ isset($item->koordinator_name) ? $item->koordinator_name : '' }}
+                                        {{isset($item->koordinatorUser->name)?$item->koordinatorUser->name:'-'}}
                                     @endif
                                 </td>
                                 <td><a href="{{route('user-member.print-iuran',['id'=>$item->id,'tahun'=>$tahun])}}" target="_blank" data-toggle="tooltip" title="Cetak Tagihan {{$tahun}}"><i class="fa fa-print"></i></a>

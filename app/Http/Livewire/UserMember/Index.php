@@ -17,14 +17,12 @@ class Index extends Component
     public function render()
     {
         $data = UserMember::with(['anggota_rekomendasi','user_rekomendasi','koordinatorUser','klaim'])
-                            ->withCount(['user_rekomendasi'])
-                            ->select('user_member.*')->join('users','users.id','=','user_member.user_id')
+                            ->withCount('rekomendasi_')
+                            // ->select('user_member.*')
+                            //->join('users','users.id','=','user_member.user_id')
                             ->orderBy('user_member.no_anggota_platinum','DESC')
                             ->where('user_member.is_non_anggota',0)
-                            ->where('user_member.no_anggota_platinum','<>','900000000')
-                            // ->join('users','users.id','=','user_member.user_id')
-                            // ->where('users.user_access_id',4)
-                            ;
+                            ->where('user_member.no_anggota_platinum','<>','900000000');
 
         if($this->keyword){
             $data->where(function($table){
@@ -34,9 +32,16 @@ class Index extends Component
             });
         }
         
-        if($this->koordinator_id) $data = $data->where('user_member.koordinator_id',$this->koordinator_id);
+        if($this->koordinator_id){
+            if(is_numeric($this->koordinator_id))
+                $data->where('user_member.koordinator_id',$this->koordinator_id);
+            else    
+                $data->where('user_member.koordinator_nama',$this->koordinator_id);
+
+        }
+
         if($this->status) $data = $data->where('user_member.status',$this->status);
-            
+
         return view('livewire.user-member.index')
                 ->layout('layouts.app')
                 ->with(['data'=>$data->paginate(100)]);
@@ -86,7 +91,7 @@ class Index extends Component
         $objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setWrapText(false);
         $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A3', 'No Urut')
-                    ->setCellValue('B3', 'No Anggota Platinum')
+                    ->setCellValue('B3', 'No Anggota')
                     ->setCellValue('C3', 'No Anggota Ex Gold')
                     ->setCellValue('D3', 'No Form')
                     ->setCellValue('E3', 'Koordinator')
@@ -186,15 +191,20 @@ class Index extends Component
                                         ->orWhere('name_kta','LIKE', '%'.$this->keyword.'%')
                                         ->orWhere('email','LIKE', '%'.$this->keyword.'%');
         }
-        if($this->koordinator_id)  $data = $data->where('koordinator_id',$this->koordinator_id);
+        
+        if($this->koordinator_id){
+            if(is_numeric($this->koordinator_id))
+                $data->where('user_member.koordinator_id',$this->koordinator_id);
+            else    
+                $data->where('user_member.koordinator_nama',$this->koordinator_id);
+
+        }
         
         if($this->status) $data = $data->where('status',$this->status);
         
         foreach($data->get() as $k => $i){
-            if($i->koordinator_id==1)
-                $koordinator_name = "Kantor";
-            else
-                $koordinator_name = isset($i->koordinatorUser->name)?$i->koordinatorUser->name:'';
+
+            $koordinator_name = $i->koordinator_nama;
 
             $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$num,($k+1))
@@ -205,14 +215,14 @@ class Index extends Component
                 ->setCellValue('F'.$num,date('d-m-Y',strtotime($i->tanggal_diterima)))
                 ->setCellValue('G'.$num, $i->name)
                 ->setCellValue('H'.$num,$i->tempat_lahir.', '.date('d-m-Y',strtotime($i->tanggal_lahir)))
-                ->setCellValue('I'.$num,$i->alamat)
+                ->setCellValue('I'.$num,$i->address)
                 ->setCellValue('J'.$num,$i->blood_type)
                 ->setCellValue('K'.$num,isset($i->kota->name)?$i->kota->name:'')
                 ->setCellValue('L'.$num,$i->jenis_kelamin)
                 ->setCellValue('M'.$num,$i->Id_Ktp)
                 ->setCellValue('N'.$num,$i->phone_number)
                 ->setCellValue('O'.$num,$i->agama)
-                ->setCellValue('P'.$num,date('d-m-Y',strtotime($i->tanggal_meninggal)))
+                ->setCellValue('P'.$num,$i->tanggal_meninggal ? date('d-m-Y',strtotime($i->tanggal_meninggal)) : '-')
                 ->setCellValue('Q'.$num,$i->name_waris1)
                 ->setCellValue('R'.$num,$i->address_waris1)
                 ->setCellValue('S'.$num,$i->tempat_lahirwaris1.', '.date('d-m-Y',strtotime($i->tanggal_lahirwaris1)))
@@ -234,7 +244,7 @@ class Index extends Component
                 ->setCellValue('AI'.$num,$i->uang_pendaftaran)
                 ->setCellValue('AJ'.$num,$i->iuran_tetap)
                 ->setCellValue('AK'.$num,$i->total_pembayaran)
-                ->setCellValue('AL'.$num, isset($i->koordinatorUser->name)?$i->koordinatorUser->name:'')
+                ->setCellValue('AL'.$num, $i->koordinator_nama)
                 ->setCellValue('AM'.$num,'')
                 ->setCellValue('AN'.$num,'')
                 ->setCellValue('AO'.$num,'')

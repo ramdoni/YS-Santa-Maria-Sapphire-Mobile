@@ -49,9 +49,6 @@
                         <li class="{{ (Request::segment(1) === 'users') ? 'active' : null }}">
                             <a href="{{route('users.index')}}"><i class="icon-users"></i> <span>User Login</span></a>
                         </li>
-                        <li class="{{ Request::segment(1) === 'koordinator' ? 'active' : null }}">
-                            <a href="{{route('koordinator.index')}}"><i class="icon-users"></i> <span>Koordinato</span>r</a>
-                        </li>
                         <li class="{{ Request::segment(1) === 'user-member' ? 'active' : null }}">
                             <a href="{{route('user-member.index')}}"><i class="icon-users"></i> <span>Anggota</span></a>
                         </li>

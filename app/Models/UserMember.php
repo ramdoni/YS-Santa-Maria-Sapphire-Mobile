@@ -48,6 +48,11 @@ class UserMember extends Model
         return $this->belongsTo(UserMember::class,'user_id_recomendation','id')->where('status',2);
     }
 
+    public function rekomendasi_()
+    {
+        return $this->hasMany(UserMember::class,'id','user_id_recomendation')->where('status',2);
+    }
+
     public function anggota_rekomendasi()
     {
         return $this->hasMany('\App\Models\UserMember','user_id_recomendation','id');

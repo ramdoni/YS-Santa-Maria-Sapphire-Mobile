@@ -8,7 +8,7 @@
                 <table>
                     <tr>
                         <th>No Form</th>
-                        <td> : {{$data->no_form}}</td>
+                        <td><input type="text" class="form-control" wire:model="form_no" /></td>
                     </tr>
                     <tr>
                         <th>No Anggota</th>
@@ -82,13 +82,11 @@
                     @enderror
                 </div>
                 @if($city=='OTHER')
-                <div class="form-group">
-                        <input type="text" class="form-control" id="city_lainnya" placeholder="Enter Other City" wire:model="city_lainnya">
-                        @error('city_lainnya') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
+                    <div class="form-group">
+                            <input type="text" class="form-control" id="city_lainnya" placeholder="Enter Other City" wire:model="city_lainnya">
+                            @error('city_lainnya') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
                 @endif
-            </div>
-            <div class="col-md-6">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>Jenis Kelamin</label>
@@ -111,17 +109,33 @@
                         @error('blood_type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row">
+                    
                     <div class="form-group col-md-6">
-                        <label>{{ __('Koordinator')}}</label>
-                        <select class="form-control" wire:model="koordinator_id">
-                            <option value=""> --- Select Koordinator --- </option>
-                            @foreach(\App\Models\UserMember::join('users','users.id','=','user_member.user_id')->where('users.user_access_id',3)->select('user_member.*')->orderBy('user_member.name','ASC')->get() as $koordinator)
-                                <option value="{{$koordinator->id}}">{{$koordinator->name}}</option>
-                            @endforeach
-                        </select>
-                        @error('koordinator_id') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
+                        <label>Koordinator Nama</label>
+                        <input type="text" class="form-control" wire:model="koordinator_nama">
+                        @error('koordinator_nama') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>  
+                    <div class="form-group col-md-6">
+                        <label>Koordinator NIK</label>
+                        <input type="text" class="form-control" wire:model="koordinator_nik">
+                        @error('koordinator_nik') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>  
+                    <div class="form-group col-md-6">
+                        <label>Koordinator HP</label>
+                        <input type="text" class="form-control" wire:model="koordinator_hp">
+                        @error('koordinator_nama') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>  
+                    <div class="form-group col-md-6">
+                        <label>Koordinator Alamat</label>
+                        <input type="text" class="form-control" wire:model="koordinator_alamat">
+                        @error('koordinator_alamat') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div> 
+
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <label>User Rekomendator</label>
                         <input list="rekomendator" type="text" class="form-control" id="user_id_recomendation" name="user_id_recomendation" wire:model="user_id_recomendation">

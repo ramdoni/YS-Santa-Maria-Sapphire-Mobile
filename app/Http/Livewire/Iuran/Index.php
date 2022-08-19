@@ -19,13 +19,19 @@ class Index extends Component
 
     public function render()
     {
-        $data = UserMember::select(["user_member.id","user_member.name","user_member.koordinator_id","user_member.Id_Ktp",
+        $data = UserMember::select(["user_member.id","user_member.koordinator_nama","user_member.name","user_member.koordinator_id","user_member.Id_Ktp",
                                     "user_member.no_anggota_platinum","user_member.tanggal_diterima",\DB::raw('user_member_koordinator.name as koordinator_name')])
                                 ->leftJoin(\DB::raw('user_member as user_member_koordinator'),'user_member_koordinator.id','=','user_member.koordinator_id')
                                 ->where(['user_member.is_non_anggota'=>0,'user_member.status'=>2])
                                 ->orderBy('user_member.id','DESC');
 
-        if($this->koordinator_id) $data->where('user_member.koordinator_id',$this->koordinator_id);
+        if($this->koordinator_id){
+            if(is_numeric($this->koordinator_id))
+                $data->where('user_member.koordinator_id',$this->koordinator_id);
+            else    
+                $data->where('user_member.koordinator_nama',$this->koordinator_id);
+        }
+
         if($this->member_id) $data->where('user_member.id',$this->member_id);
         if($this->keyword) $data->where(function($table){
                                 $table->where('user_member.name','LIKE',"%{$this->keyword}%")
@@ -88,10 +94,7 @@ class Index extends Component
 
         $activeSheet->setCellValue('B2', 'Nama Koordinator');
 
-        if($this->koordinator_id==1)
-            $koordinator_name = "Kantor";
-        else
-            $koordinator_name = (isset($get_koordinator->name) ? $get_koordinator->name : '');
+        $koordinator_name = $this->koordinator_id;
         
         $activeSheet->setCellValue('C2', ': '.$koordinator_name);
 
@@ -137,12 +140,18 @@ class Index extends Component
         $activeSheet->getColumnDimension('E')->setAutoSize(true);
         $activeSheet->getColumnDimension('F')->setAutoSize(true);
         $activeSheet->getColumnDimension('G')->setAutoSize(true);
-        // $objPHPExcel->getActiveSheet()->freezePane('A4');
-        // $objPHPExcel->getActiveSheet()->setAutoFilter('B3:G3');
+
         $num=6;
         $data = UserMember::orderBy('id','DESC');
 
-        if($this->koordinator_id) $data->where('koordinator_id',$this->koordinator_id);
+        // if($this->koordinator_id) $data->where('koordinator_id',$this->koordinator_id);
+
+        if($this->koordinator_id){
+            if(is_numeric($this->koordinator_id))
+                $data->where('user_member.koordinator_id',$this->koordinator_id);
+            else    
+                $data->where('user_member.koordinator_nama',$this->koordinator_id);
+        }
         
         $styleArray = array(
             'borders' => array(

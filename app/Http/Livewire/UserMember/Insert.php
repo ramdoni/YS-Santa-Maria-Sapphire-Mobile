@@ -72,6 +72,7 @@ class Insert extends Component
 	public $extend_register3,$extend_register4,$extend_register5;
 	public $validate_form_1 = false,$validate_form_2=false,$validate_form_3=false,$validate_form_4=false,$validate_form_5=false;
 	public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat;
+
 	protected $listeners = ['save-all'=>'save_all'];
 
 	public function render()
@@ -512,49 +513,36 @@ class Insert extends Component
 		$this->umur = hitung_umur($this->tanggal_lahir);
 		$this->extend_register1=false;
         $this->extend_register2=false;
-		// if($this->umur >=60 and $this->umur <=64){ // di atas 60 dan di bawah 64 tahun wajib mendaftarkan satu anggota
-        //     $this->extend_register1=false;
-        // }elseif($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan dua anggota
-        //     $this->extend_register1=true;
-		// 	$this->extend_register2=true;
-		// }elseif($this->umur >=75){ // diatas 75 tahun wajib mendaftarkan 5 anggota
-		// 	$this->extend_register1=true;
-		// 	$this->extend_register2=true;
-        //     $this->extend_register3=true;
-        //     $this->extend_register4=true;
-        //     $this->extend_register5=true;
-		// }
-
-		
-        // }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
-        //     $this->extend_register1=true;
-        //     $this->extend_register2=true;
-        // }elseif($this->umur>=80){
-		// 	$this->extend_register1=true;
-        //     $this->extend_register2=true;
-        //     $this->extend_register3=true;
-        //     $this->extend_register4=true;
-        //     $this->extend_register5=true;
-		// }
 	}
+	
 	public function save()
     {
 		$rules = [
 			'Id_Ktp'=>['required',
-								Rule::unique('user_member')->where(function($query) {
-									$query->where('Id_Ktp', $this->Id_Ktp)->where('status', 2);
-								})
-							],
+							Rule::unique('user_member')->where(function($query) {
+								$query->where('Id_Ktp', $this->Id_Ktp)->where('status', 2);
+							})
+						],
 			'name' => 'required|string',
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
-			// 'koordinator_id' => 'required',
+			'koordinator_nama' => 'required',
+			'koordinator_nik' => 'required',
+			'koordinator_hp' => 'required',
+			'koordinator_alamat' => 'required',
 			'tanggal_diterima' => 'required'
 		];
+
+		if($this->foto_ktp!="") $rules['foto_ktp'] = 'image:max:1024';
+		if($this->foto_kk!="") $rules['foto_kk'] = 'image:max:1024';
+		if($this->pas_foto!="") $rules['pas_foto'] = 'image:max:1024';
+		if($this->foto_ktpwaris1!="") $rules['foto_ktpwaris1'] = 'image:max:1024';
+		if($this->foto_ktpwaris2!="") $rules['foto_ktpwaris2'] = 'image:max:1024';
+		if($this->file_konfirmasi!="") $rules['file_konfirmasi'] = 'image:max:1024';
+		
 		$message_rules = [
 			"Id_Ktp.unique" => "Maaf No KTP sudah digunakan silahkan dicoba dengan No KTP yang lain.",
 			"uang_pendaftaran.min" => "Minimal uang pendaftaran Rp. 50.000,-"
@@ -564,7 +552,7 @@ class Insert extends Component
 		if(empty($this->payment_date)) $this->payment_date = date('Y-m-d');
 
     	$this->validate($rules,$message_rules);
-		
+	
 		$password = generate_password($this->name,$this->tanggal_lahir);
 		
 		$counting =  get_setting('counting_no_anggota_new')+1;
@@ -636,50 +624,32 @@ class Insert extends Component
         $data->status = 2; // langsung approve ketika admin yang input
 
         if($this->foto_ktp!=""){
-            $this->validate([
-                'foto_ktp' => 'image:max:1024', // 1Mb Max
-            ]);
             $namektp = 'foto_ktp'.date('Ymdhis').'.'.$this->foto_ktp->extension();
             $this->foto_ktp->storePubliclyAs('public',$namektp);
             $data->foto_ktp = $namektp;
         }
 
         if($this->foto_kk!=""){
-            $this->validate([
-                'foto_kk' => 'image:max:1024', // 1Mb Max
-            ]);
             $namekk = 'foto_kk'.date('Ymdhis').'.'.$this->foto_kk->extension();
             $this->foto_kk->storePubliclyAs('public',$namekk);
             $data->foto_kk = $namekk;
         }
         if($this->pas_foto!=""){
-            $this->validate([
-                'pas_foto' => 'image:max:1024', // 1Mb Max
-            ]);
             $namepasfoto = 'pas_foto'.date('Ymdhis').'.'.$this->pas_foto->extension();
             $this->pas_foto->storePubliclyAs('public',$namepasfoto);
             $data->pas_foto = $namepasfoto;
         }
         if($this->foto_ktpwaris1!=""){
-            $this->validate([
-                'foto_ktpwaris1' => 'image:max:1024', // 1Mb Max
-            ]);
             $namefotoktpwaris1 = 'foto_ktpwaris1'.date('Ymdhis').'.'.$this->foto_ktpwaris1->extension();
             $this->foto_ktpwaris1->storePubliclyAs('public',$namefotoktpwaris1);
             $data->foto_ktpwaris1 = $namefotoktpwaris1;
         }
         if($this->foto_ktpwaris2!=""){
-            $this->validate([
-                'foto_ktpwaris2' => 'image:max:1024', // 1Mb Max
-            ]);
             $namefotoktpwaris2 = 'foto_ktpwaris2'.date('Ymdhis').'.'.$this->foto_ktpwaris2->extension();
             $this->foto_ktpwaris2->storePubliclyAs('public',$namefotoktpwaris2);
             $data->foto_ktpwaris2 = $namefotoktpwaris2;
 		}
 		if($this->file_konfirmasi!=""){
-            $this->validate([
-                'file_konfirmasi' => 'image:max:1024', // 1Mb Max
-            ]);
             $namekonfirmasi = 'file_konfirmasi'.date('Ymdhis').'.'.$this->file_konfirmasi->extension();
             $this->file_konfirmasi->storePubliclyAs('public',$namekonfirmasi);
             $data->file_konfirmasi = $namekonfirmasi;
@@ -724,7 +694,6 @@ class Insert extends Component
 			$iuran->tahun = $tahun;
             $iuran->iuran_pertama = 1;
 			$iuran->save();
-
 			$bulan++;
 		}
 
@@ -733,31 +702,26 @@ class Insert extends Component
 			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>1,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
-
 		if($this->validate_form_2){ 
 			$counting =  get_setting('counting_no_anggota_new')+1;
 			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>2,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
-
 		if($this->validate_form_3){
 			$counting =  get_setting('counting_no_anggota_new')+1;
 			update_setting('counting_no_anggota_new',$counting); 
 			$this->emit('save_rekomendasi',['num'=>3,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
-
 		if($this->validate_form_4){ 
 			$counting =  get_setting('counting_no_anggota_new')+1;
 			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>4,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
-
 		if($this->validate_form_5){ 
 			$counting =  get_setting('counting_no_anggota_new')+1;
 			update_setting('counting_no_anggota_new',$counting);
 			$this->emit('save_rekomendasi',['num'=>5,'id'=>$data->id,'no_anggota'=>$counting]);
 		}
-		
 		$this->is_success =true;
 		
 		$messageWa  = "Kepada Yth Ibu/Bpak ".$data->name.",\n\nTerima kasih telah mendaftar sebagai Anggota di Yayasan Kematian Santa Maria, \nNomor Anggota : *".$data->no_anggota_platinum."*\n. Silahkan login dengan menggunakan username :". $data->no_anggota_platinum ."\n dan password {$password} \n";

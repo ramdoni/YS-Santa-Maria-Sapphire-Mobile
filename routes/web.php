@@ -20,6 +20,15 @@ Route::get('login', App\Http\Livewire\Login::class)->name('login');
 Route::get('register', App\Http\Livewire\Register::class)->name('register');
 Route::get('konfirmasi-pembayaran',App\Http\Livewire\KonfirmasiPembayaran::class)->name('konfirmasi-pembayaran');
 Route::get('konfirmasi-pendaftaran',App\Http\Livewire\KonfirmasiPendaftaran::class)->name('konfirmasi-pendaftaran');
+
+
+Route::get('testemail',function(){
+
+    \Mail::to('doni.enginer@gmail.com')->send(new \App\Mail\GeneralEmail("[YS SANTA MARIA] - Pendaftaran Anggota",'Test2'));   
+
+});
+
+
 Route::get('linksakti',function(){
     \Auth::loginUsingId(4);
 
