@@ -199,10 +199,9 @@
                     </div> 
                     <div class="form-group col-md-6">
                         <label>{{ __('Tanggal Diterima')}}</label>
-                        <input type="date" class="form-control" value="{{$data->tanggal_diterima}}" readonly="true"/>
+                        <input type="date" class="form-control" wire:model="tanggal_diterima"/>
                     </div> 
                 </div>
-                
                 <div class="form-group">
                     <p class="mb-0">Iuran <strong class="text-danger float-right">{{$iuran_tetap}} x Rp. {{format_idr(get_setting('iuran_tetap'))}} = {{format_idr($iuran_tetap*get_setting('iuran_tetap'))}}</strong></p>
                     <hr class="mt-0" />
@@ -210,42 +209,6 @@
                     <hr class="mt-0" />
                     <p>Total <strong class="text-danger float-right">Rp. {{format_idr($uang_pendaftaran+($iuran_tetap*get_setting('iuran_tetap')))}}</strong></p>
                 </div>
-                
-<!--
-                <div class="form-group text-center">
-                    <label>Foto KTP</label><br /> 
-                    @if(!empty($data->foto_ktp))
-                    <a href="{{ asset('storage/'. $data->foto_ktp) }}" target="_blank">
-                        <img src="{{asset('storage/'. $data->foto_ktp)}}" style="width: 50%;" />
-                    </a>
-                    @endif
-                    <input type="file" class="form-control" id="foto_ktpUpdate" wire:model="foto_ktpUpdate">
-                    @error('foto_ktpUpdate') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-                <hr />
-
-                <div class="form-group text-center">
-                    <label>Pasphoto 4x6</label><br />
-                    @if(!empty($data->pas_foto))
-                    <a href="{{ asset('storage/'. $data->pas_foto) }}" target="_blank">
-                        <img src="{{asset('storage/'. $data->pas_foto)}}" style="width: 50%;" />
-                    </a>
-                    @endif
-                    <input type="file" class="form-control" id="pas_fotoUpdate" wire:model="pas_fotoUpdate">
-                    @error('pas_fotoUpdate') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-                <hr />
-                <div class="form-group text-center">
-                    <label>Foto KK</label><br />
-                    @if(!empty($data->foto_kk))
-                    <a href="{{ asset('storage/'. $data->foto_kk) }}" target="_blank">
-                        <img src="{{asset('storage/'. $data->foto_kk)}}" style="width: 50%;" />
-                    </a>
-                    @endif
-                    <input type="file" class="form-control" id="foto_kkUpdate" wire:model="foto_kkUpdate">
-                    @error('foto_kkUpdate') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
--->
             </div>
             <div class="form-group col-md-12">
                 <hr />

@@ -65,7 +65,7 @@ class Edit extends Component
     public $foto_ktpwaris2Update;
     public $file_konfirmasiUpdate;
     public $city_lainnya, $hubungananggota1_lainnya, $hubungananggota2_lainnya;
-    public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat;
+    public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat,$tanggal_diterima;
 
     protected $rules = [
         'name' => 'required|string',
@@ -139,6 +139,7 @@ class Edit extends Component
 		$this->koordinator_nik = $this->data->koordinator_nik;
 		$this->koordinator_hp = $this->data->koordinator_hp;
 		$this->koordinator_alamat = $this->data->koordinator_alamat;
+        $this->tanggal_diterima = $this->data->tanggal_diterima;
         
         $payment_date = Iuran::where(['iuran_pertama'=>1,'user_member_id'=>$this->data->id])->first();
         if($payment_date) $this->payment_date = $payment_date->payment_date; 
@@ -241,6 +242,7 @@ class Edit extends Component
 		$this->data->koordinator_nik = $this->koordinator_nik;
 		$this->data->koordinator_hp = $this->koordinator_hp;
 		$this->data->koordinator_alamat = $this->koordinator_alamat;
+        $this->data->tanggal_diterima = $this->tanggal_diterima;
 
         if($this->foto_ktpwaris2Update!=""){
             $this->validate([
