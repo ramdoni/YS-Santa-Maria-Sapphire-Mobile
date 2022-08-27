@@ -50,7 +50,7 @@ class UserMember extends Model
 
     public function rekomendasi_()
     {
-        return $this->hasMany(UserMember::class,'id','user_id_recomendation')->where('status',2);
+        return $this->belongsTo(UserMember::class,'id','user_id_recomendation')->where('status',2);
     }
 
     public function anggota_rekomendasi()
