@@ -83,8 +83,8 @@
                 </div>
                 @if($city=='OTHER')
                     <div class="form-group">
-                            <input type="text" class="form-control" id="city_lainnya" placeholder="Enter Other City" wire:model="city_lainnya">
-                            @error('city_lainnya') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="text" class="form-control" id="city_lainnya" placeholder="Enter Other City" wire:model="city_lainnya">
+                        @error('city_lainnya') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 @endif
                 <div class="row">

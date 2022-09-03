@@ -13,9 +13,9 @@ class AddKoordinatorNamaToUserMember2 extends Migration
      */
     public function up()
     {
-        Schema::table('user_member', function (Blueprint $table) {
-            $table->char('koordinator_nama', 100)->nullable();
-        });
+        // Schema::table('user_member', function (Blueprint $table) {
+        //     $table->char('koordinator_nama', 100)->nullable();
+        // });
     }
 
     /**
