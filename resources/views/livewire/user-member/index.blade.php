@@ -93,6 +93,8 @@
                                         @case(2)
                                             <?php
                                                 $countrec = $item->rekomendasi__count;
+                                                // $countrec = count(App\Models\UserMember::where('user_id_recomendation', $item->user_id_recomendation)->get());
+                                                echo $countrec;
                                                 $recmember = 0;
                                                 if(hitung_umur($item->tanggal_lahir) >60 and hitung_umur($item->tanggal_lahir) <=64) $recmember = 1;
                                                 if(hitung_umur($item->tanggal_lahir) >=65 and hitung_umur($item->tanggal_lahir) <=74) $recmember = 3;
