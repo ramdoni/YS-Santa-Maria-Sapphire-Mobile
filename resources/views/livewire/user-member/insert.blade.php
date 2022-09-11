@@ -149,21 +149,7 @@
                             </select>
                             @error('agama') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="col-md-6">
-                            <label>User Rekomendator</label>
-                            <input list="rekomendator" type="text" class="form-control" id="user_id_recomendation" name="user_id_recomendation" wire:model="user_id_recomendation">
-                            <datalist id="rekomendator">
-                                @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
-                                    @if(hitung_umur($item->tanggal_lahir) < 60)
-                                        continue;
-                                    @else
-                                        <option value="{{ $item->no_anggota_platinum }}">{{ $item->name }}</option> 
-                                    @endif
-                                
-                                @endforeach
-                            </datalist>
-                            @error('user_rekomendator') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
+                            
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -202,13 +188,26 @@
                             @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="exampleInputAlamat">Uang Pendaftaran - Sukarela Min <strong class="text-danger">Rp. 50.000</strong></label>
+                            <!-- <label for="exampleInputAlamat">Uang Pendaftaran - Sukarela Min <strong class="text-danger">Rp. 50.000</strong></label> -->
+                            <label for="exampleInputAlamat">Uang Pendaftaran - Min <strong class="text-danger">Rp. 50.000</strong></label>
                             <input type="number" class="form-control" wire:model="uang_pendaftaran" wire:input="calculate_">
                             @error('uang_pendaftaran') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-6">
-                            <h5 class="btn btn-outline-danger">Total Rp. {{format_idr($total)}}</h5>
+                        <div class="form-group col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label for="">Dana Form </label>
+                                    <input type="text" class="form-control" wire:model="dana_form" value="Rp. 5.000" readonly>
+                                    @error('uang_pendaftaran') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div> 
+                                <div class="col-md-4">
+                                    <label for="">Total </label>
+                                    <h5 class="btn btn-outline-danger">Total Rp. {{format_idr($total)}}</h5>
+                                </div>
+                            </div>
+                            
                         </div>
+                        
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -288,6 +287,11 @@
                         
                     </div>
                 </div>
+
+                
+                
+
+
                 <div class="col-12"><br /></div>
                 <div class="col-md-6">
                     <h6 class="text-info">DATA AHLI WARIS 1</h6>

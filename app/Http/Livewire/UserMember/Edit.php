@@ -66,6 +66,7 @@ class Edit extends Component
     public $file_konfirmasiUpdate;
     public $city_lainnya, $hubungananggota1_lainnya, $hubungananggota2_lainnya;
     public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat,$tanggal_diterima;
+    public $insert=false;
 
     protected $rules = [
         'name' => 'required|string',

@@ -866,6 +866,7 @@ class ComposerStaticInit8eb009ed5d020576fc59907df4023d0b
         'App\\Models\\ModulesItem' => __DIR__ . '/../..' . '/app/Models/ModulesItem.php',
         'App\\Models\\Project' => __DIR__ . '/../..' . '/app/Models/Project.php',
         'App\\Models\\Provinsi' => __DIR__ . '/../..' . '/app/Models/Provinsi.php',
+        'App\\Models\\RekomendatorAttachment' => __DIR__ . '/../..' . '/app/Models/RekomendatorAttachment.php',
         'App\\Models\\Settings' => __DIR__ . '/../..' . '/app/Models/Settings.php',
         'App\\Models\\UangPendaftaran' => __DIR__ . '/../..' . '/app/Models/UangPendaftaran.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

@@ -26,9 +26,9 @@
                     @foreach($data as $k => $item)
                     <tr>
                         <td style="width: 50px;">{{$k+1}}</td>
-                        <td>{{$item->user_member->no_anggota_platinum}}</td>
+                        <td>{{@$item->user_member->no_anggota_platinum}}</td>
                         <td>{{isset($item->user_member->name)?$item->user_member->name:''}}</td>
-                        <td>{{$item->user_member->tanggal_diterima}}</td>
+                        <td>{{@$item->user_member->tanggal_diterima}}</td>
                         <td>{{$item->tgl_kematian}}</td>
                         <td>{{$item->tgl_pengajuan}}</td>
                         <td>{{format_idr($item->santunan_pelayanan)}}</td>
@@ -57,6 +57,9 @@
                                         <a class="dropdown-item" href="{{route('ketua-yayasan.klaim.edit',['id'=>$item->id])}}"><i class="fa fa-search-plus"></i>Detail</a>
                                     @endif
                                         <a class="dropdown-item" href="{{route('ketua-yayasan.klaim.additional',['id'=>$item->id])}}"><i class="fa fa-search-plus"></i>Claim Additional</a>
+
+
+                                    <a class="dropdown-item" href="{{route('ketua-yayasan.klaim.edit',['id'=>$item->id])}}"><i class="fa fa-search-plus"></i>Detail</a>
                                 </div>
                             </div>
                         </td>

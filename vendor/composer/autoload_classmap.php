@@ -150,6 +150,7 @@ return array(
     'App\\Models\\ModulesItem' => $baseDir . '/app/Models/ModulesItem.php',
     'App\\Models\\Project' => $baseDir . '/app/Models/Project.php',
     'App\\Models\\Provinsi' => $baseDir . '/app/Models/Provinsi.php',
+    'App\\Models\\RekomendatorAttachment' => $baseDir . '/app/Models/RekomendatorAttachment.php',
     'App\\Models\\Settings' => $baseDir . '/app/Models/Settings.php',
     'App\\Models\\UangPendaftaran' => $baseDir . '/app/Models/UangPendaftaran.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
