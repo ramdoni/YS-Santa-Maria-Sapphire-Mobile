@@ -178,6 +178,15 @@
             </div>
         </div>
     </div>
+
+    
+    <livewire:register-attachment-rekomendator />
+    
+
+
+
+
+
     <div class="form-group col-md-12">
         <br />
     </div>

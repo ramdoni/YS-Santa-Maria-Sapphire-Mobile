@@ -573,35 +573,35 @@ class Register extends Component
     }
 
 
-	public function saveattachmentrekomendator()
-    {
-        // $this->validate([
-        //     'project_id'=>'image:max:1024',
-        //     'week'=>'required',
-        //     'budget'=>'required',
-        // ]);
+	// public function saveattachmentrekomendator()
+    // {
+    //     // $this->validate([
+    //     //     'project_id'=>'image:max:1024',
+    //     //     'week'=>'required',
+    //     //     'budget'=>'required',
+    //     // ]);
 
-        $data 									= new RekomendatorAttachment();
-        $data->user_registration			 	= $this->rand_id;
-        $data->rekomendator_id				 	= $this->user_id_recomendation;
-        $data->attachment_rekomendator_file 	= $this->attachment_rekomendator_file;
-        $data->attachment_rekomendator_name 	= $this->attachment_rekomendator_name;
-        $data->save();
+    //     $data 									= new RekomendatorAttachment();
+    //     $data->user_registration			 	= $this->rand_id;
+    //     $data->rekomendator_id				 	= $this->user_id_recomendation;
+    //     $data->attachment_rekomendator_file 	= $this->attachment_rekomendator_file;
+    //     $data->attachment_rekomendator_name 	= $this->attachment_rekomendator_name;
+    //     $data->save();
 
-        $this->insert = false;
-        // $this->reset(['budget']);
-        $this->emit('reload');
-    }
+    //     $this->insert = false;
+    //     // $this->reset(['budget']);
+    //     $this->emit('reload');
+    // }
 
 
-	public function updateattachmentrekomendator($rand_id, $id_user_registration)
-    {
-        $data 						= RekomendatorAttachment::where('user_registration', $rand_id)->get();
-        $data->user_registration 	= $user_registration;
-        $data->save();
+	// public function updateattachmentrekomendator($rand_id, $id_user_registration)
+    // {
+    //     $data 						= RekomendatorAttachment::where('user_registration', $rand_id)->get();
+    //     $data->user_registration 	= $user_registration;
+    //     $data->save();
 
-        $this->insert = false;
-        // $this->reset(['budget']);
-        // $this->emit('reload');
-    }
+    //     $this->insert = false;
+    //     // $this->reset(['budget']);
+    //     // $this->emit('reload');
+    // }
 }

@@ -91,6 +91,7 @@ return array(
     'App\\Http\\Livewire\\Project\\Index' => $baseDir . '/app/Http/Livewire/Project/Index.php',
     'App\\Http\\Livewire\\Project\\Insert' => $baseDir . '/app/Http/Livewire/Project/Insert.php',
     'App\\Http\\Livewire\\Register' => $baseDir . '/app/Http/Livewire/Register.php',
+    'App\\Http\\Livewire\\RegisterAttachmentRekomendator' => $baseDir . '/app/Http/Livewire/RegisterAttachmentRekomendator.php',
     'App\\Http\\Livewire\\RegisterRekomendasi' => $baseDir . '/app/Http/Livewire/RegisterRekomendasi.php',
     'App\\Http\\Livewire\\Sapphire\\Anggota\\Approval' => $baseDir . '/app/Http/Livewire/Sapphire/Anggota/Approval.php',
     'App\\Http\\Livewire\\Sapphire\\Anggota\\Edit' => $baseDir . '/app/Http/Livewire/Sapphire/Anggota/Edit.php',
