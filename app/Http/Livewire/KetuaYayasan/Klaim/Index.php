@@ -27,4 +27,9 @@ class Index extends Component
         return view('livewire.ketua-yayasan.klaim.index')
                 ->with(['data'=>$data->paginate(100)]);
     }
+
+    public function delete($id)
+    {
+        \App\Models\Klaim::find($id)->delete();
+    }
 }

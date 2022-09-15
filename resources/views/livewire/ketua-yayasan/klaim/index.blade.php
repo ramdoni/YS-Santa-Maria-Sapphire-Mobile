@@ -31,8 +31,9 @@
                         <td>{{@$item->user_member->tanggal_diterima}}</td>
                         <td>{{$item->tgl_kematian}}</td>
                         <td>{{$item->tgl_pengajuan}}</td>
-                        <td>{{format_idr($item->santunan_pelayanan)}}</td>
-                        <td>{{format_idr($item->santunan_uang_duka)}}</td>
+                        <td>@livewire('ketua-yayasan.klaim.klaim-editable',['data'=>$item,'field'=>'santunan_pelayanan'],key($item->id))</td>
+                        <!-- <td>{{format_idr($item->santunan_pelayanan)}}</td> -->
+                        <td>@livewire('ketua-yayasan.klaim.klaim-editable',['data'=>$item,'field'=>'santunan_uang_duka'],key($item->id))</td>
                         <td>{{format_idr($item->total)}}</td>
                         <td>
                             @switch($item->is_approve_ketua)
@@ -60,6 +61,7 @@
 
 
                                     <a class="dropdown-item" href="{{route('ketua-yayasan.klaim.edit',['id'=>$item->id])}}"><i class="fa fa-search-plus"></i>Detail</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" wire:click="delete({{$item->id}})"><i class="fa fa-trash"></i></a>
                                 </div>
                             </div>
                         </td>
