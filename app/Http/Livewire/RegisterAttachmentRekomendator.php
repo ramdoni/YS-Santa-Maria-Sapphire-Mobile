@@ -10,6 +10,7 @@ use App\Models\RekomendatorAttachment;
 use Illuminate\Validation\Rule; 
 use Illuminate\Support\Facades\Hash;
 
+
 class RegisterAttachmentRekomendator extends Component 
 {
 	use WithFileUploads;
@@ -19,16 +20,19 @@ class RegisterAttachmentRekomendator extends Component
 
 	
 
-	protected $listeners = ['save-all'=>'save_all'];
+	// protected $listeners = ['save-all'=>'save_all'];
 
 	public function render()
     {
-        if($this->Id_Ktp){
-            $data = \App\Models\RekomendatorAttachment::where('rekomendator_id', $this->Id_Ktp)->get();
-        }else{
-            $data = [];
-        }
+        // if($this->Id_Ktp){
+            $data = \App\Models\RekomendatorAttachment::where('rekomendator_id', '2208000185');
+            // dd($data->get());
+        // }else{
+            // $data = [];
+        // }
+        
 		
+        
         return view('livewire.register-attachment-rekomendator')->with(['data'=>$data]);
     }
 
@@ -37,32 +41,6 @@ class RegisterAttachmentRekomendator extends Component
 		$this->rand_id = rand();
 		$this->form_no = date('ymd').UserMember::count();
 	}
-
-	public function save_all($num)
-	{
-		if($num==1) $this->validate_form_1 = true;
-		if($num==2) $this->validate_form_2 = true;
-		if($num==3) $this->validate_form_3 = true;
-		if($num==4) $this->validate_form_4 = true;
-		if($num==5) $this->validate_form_5 = true;
-		
-		if($this->umur >=65 and $this->umur <=74){ // di atas 65 dan di bawah 74 tahun wajib mendaftarkan satu anggota
-            if($this->validate_form_1){
-				$this->register();
-			}
-        }elseif($this->umur >=75 and $this->umur <= 79){ // diatas 75 tahun wajib mendaftarkan 2 anggota
-            if($this->validate_form_1 and $this->validate_form_2 ){
-				$this->register();
-			}
-        }elseif($this->umur>=80){
-            if($this->validate_form_1==true and $this->validate_form_2==true and $this->validate_form_3==true and $this->validate_form_4==true and $this->validate_form_5==true){
-				$this->register();
-			}
-		}
-	}
-
-	
-
 
 	public function saveattachmentrekomendator()
     {
