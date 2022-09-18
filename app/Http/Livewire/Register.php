@@ -168,7 +168,8 @@ class Register extends Component
 
 	public function calculate_()
 	{
-		$this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		// $this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
 		$this->total_sumbangan = $this->sumbangan * get_setting('sumbangan');
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
 		$this->total += $this->total_iuran_tetap;

@@ -1,24 +1,14 @@
 <div class="col-md-6">
-    <br><br><br>
-    <h6 class="text-info">DATA REKOMENDATOR</h6>
+    <!-- <br><br><br>
+    <h6 class="text-info">DATA REKOMENDATOR</h6> -->
     <!-- <hr style="border-top:1px solid #18a2b8" /> -->
     <div class="row">
-        <!-- <div class="form-group col-md-12">
-            <label>User Rekomendator</label>
-            <input list="rekomendator" type="text" class="form-control" id="user_id_recomendation" name="user_id_recomendation" wire:model="user_id_recomendation">
-            <datalist id="rekomendator">
-                @foreach(App\Models\UserMember::orderBy('id','desc')->get() as $item)
-                    @if(hitung_umur($item->tanggal_lahir) < 60)
-                        continue;
-                    @else
-                        <option value="{{ $item->no_anggota_platinum }}">{{ $item->name }}</option> 
-                    @endif
-                
-                @endforeach
-            </datalist>
+        <div class="form-group col-md-12">
+            <label>No KTP Rekomendator</label>
+            <input type="text" class="form-control" wire:model="id_ktp_rekomendator">
             @error('user_rekomendator') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
-         -->
+        
 
         <br>
         <div class="col-md-12">
@@ -35,7 +25,8 @@
                     
                     ?>
                     <tbody>
-                        @foreach($data as $k =>  $item)
+                        @if($id_ktp_rekomendator)
+                        @foreach($dataattachment as $k =>  $item)
                             <tr>
                                 <td>{{ $k+1 }}</td>
                                 <td>{{ $item->attachment_rekomendator_name}}</td>
@@ -45,6 +36,7 @@
                                 
                             </tr>
                         @endforeach
+                        @endif
                         @if($insert)
                             <tr>
                                 <td></td>

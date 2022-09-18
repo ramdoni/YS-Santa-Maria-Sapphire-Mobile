@@ -93,7 +93,7 @@
                                                 @if ($iuran->status == 1 || $iuran->status === null || $iuran->status === 0)
                                                     <a href="{{ route('iuran.proses', ['id' => $iuran->id]) }}" data-toggle="tooltip" title="Konfirmasi Iuran"><i class="fa fa-history"></i></a>
                                                 @else
-                                                    <a href="javascript:;" class="text-{{$iuran->iuran_pertama==1? 'warning' : 'success'}}" data-toggle="tooltip" title="{{$iuran->iuran_pertama==1? 'Iuran pertama' : 'Iuran'}}"><i class="fa fa-check"></i></a>
+                                                    <a href="javascript:;" wire:click="delete([{{$k}}, {{@$item->Id_Ktp}}, {{$tahun}}])"class="text-{{$iuran->iuran_pertama==1? 'warning' : 'success'}}" data-toggle="tooltip" title="{{$iuran->iuran_pertama==1? 'Iuran pertama' : 'Iuran'}}"><i class="fa fa-check"></i></a>
                                                 @endif
                                             @endif
                                         </td>

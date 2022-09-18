@@ -16,7 +16,7 @@ class RegisterAttachmentRekomendator extends Component
 	use WithFileUploads;
 	
 	public $insert=false;
-	public $user_id_recomendation, $attachment_rekomendator_file, $attachment_rekomendator_name, $rand_id, $Id_Ktp, $tanggal_lahir, $umur;
+	public $user_id_recomendation, $attachment_rekomendator_file, $attachment_rekomendator_name, $rand_id, $Id_Ktp, $tanggal_lahir, $umur, $id_ktp_rekomendator;
 
 	
 
@@ -24,16 +24,14 @@ class RegisterAttachmentRekomendator extends Component
 
 	public function render()
     {
-        // if($this->Id_Ktp){
-            $data = \App\Models\RekomendatorAttachment::where('rekomendator_id', '2208000185');
-            // dd($data->get());
-        // }else{
-            // $data = [];
-        // }
-        
-		
-        
-        return view('livewire.register-attachment-rekomendator')->with(['data'=>$data]);
+
+        if($this->id_ktp_rekomendator){
+            $dataattachment = \App\Models\RekomendatorAttachment::where('rekomendator_id', $this->id_ktp_rekomendator)->get();
+        }else{
+            $dataattachment = [];
+        }
+
+        return view('livewire.register-attachment-rekomendator')->with(['dataattachment'=>$dataattachment]);
     }
 
 	public function mount()
@@ -50,8 +48,7 @@ class RegisterAttachmentRekomendator extends Component
         // ]);
 
         $data 									= new RekomendatorAttachment();
-        // $data->user_registration			 	= $this->rand_id;
-        $data->rekomendator_id				 	= $this->Id_Ktp;
+        $data->rekomendator_id				 	= $this->id_ktp_rekomendator;
         $data->attachment_rekomendator_file 	= $this->attachment_rekomendator_file;
         $data->attachment_rekomendator_name 	= $this->attachment_rekomendator_name;
         $data->save();

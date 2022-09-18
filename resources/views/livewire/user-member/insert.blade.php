@@ -178,10 +178,11 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(get_setting('iuran_tetap'))}}</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
+                            <!-- <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(get_setting('iuran_tetap'))}}</strong> (Rp {{format_idr($total_iuran_tetap)}})</label> -->
+                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(30000)}}</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
-                                <option value=""> --- Minimal 3 Bulan --- </option>
-                                @for($i=3;$i<=40;$i++)
+                                <option value=""> --- Minimal 1 Bulan --- </option>
+                                @for($i=1;$i<=40;$i++)
                                     <option>{{$i}}</option>
                                 @endfor
                             </select>

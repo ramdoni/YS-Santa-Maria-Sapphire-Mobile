@@ -15,7 +15,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal Aktif</th>
-                            <td>{{$data->user_member->tanggal_diterima}}</td>
+                            <td>{{@$data->user_member->tanggal_diterima}}</td>
                         </tr>
                         <tr>
                             <th>Tanggal Meninggal</th>

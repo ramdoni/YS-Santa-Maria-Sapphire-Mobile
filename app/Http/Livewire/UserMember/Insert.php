@@ -404,7 +404,8 @@ class Insert extends Component
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
 		// $this->total += $this->total_iuran_tetap;
 		// $this->total += $this->total_sumbangan;
-		$this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		// $this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
 		$this->total += $this->total_iuran_tetap;
 		$danaform = 5000;
 		$this->total = $this->total + $danaform;
