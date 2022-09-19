@@ -281,7 +281,7 @@ class Index extends Component
         // dd($bln);
         // dd($nik);
         // dd($thn);
-        dd('delete iuran');
+        // dd('delete iuran');
         $user_member_id = \App\Models\UserMember::where('id_ktp', $nik)->first()->id;   
         $delete = \App\Models\Iuran::where('bulan', $bln)->where('tahun', $thn)->where('user_member_id', $user_member_id)->first();
         $delete->delete();
