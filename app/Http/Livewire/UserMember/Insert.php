@@ -72,6 +72,7 @@ class Insert extends Component
 	public $extend_register3,$extend_register4,$extend_register5;
 	public $validate_form_1 = false,$validate_form_2=false,$validate_form_3=false,$validate_form_4=false,$validate_form_5=false;
 	public $koordinator_nama,$koordinator_nik,$koordinator_hp,$koordinator_alamat;
+	public $dana_form;
 
 	protected $listeners = ['save-all'=>'save_all'];
 
@@ -85,6 +86,7 @@ class Insert extends Component
 	public function mount()
 	{
 		$this->tanggal_diterima = date('Y-m-d');
+		$this->dana_form = 'Rp. 5.000';
 	}
 	
 	public function checkKTP()
@@ -402,8 +404,11 @@ class Insert extends Component
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
 		// $this->total += $this->total_iuran_tetap;
 		// $this->total += $this->total_sumbangan;
-		$this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		// $this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
 		$this->total += $this->total_iuran_tetap;
+		$danaform = 5000;
+		$this->total = $this->total + $danaform;
 	}
 	public function extend1_calculate_()
 	{

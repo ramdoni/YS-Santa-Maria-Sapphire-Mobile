@@ -24,9 +24,6 @@ class Index extends Component
                             ->where('user_member.is_non_anggota',0)
                             ->where('user_member.no_anggota_platinum','<>','900000000');
 
-                            // dd($data->where('user_member.name', 'Kartini')->get());
-                            // dd($data->where('user_member.user_id_recomendation', '183')->get());
-                            // dd($data->take(5)->get());
         if($this->keyword){
             $data->where(function($table){
                 foreach(\Illuminate\Support\Facades\Schema::getColumnListing('user_member') as $column){

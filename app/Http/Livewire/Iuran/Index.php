@@ -13,7 +13,7 @@ class Index extends Component
 {
     use WithPagination;
     
-    public $keyword,$user_member_id,$tahun,$koordinator_id,$koordinator,$member_id,$result;
+    public $keyword,$user_member_id,$tahun,$koordinator_id,$koordinator,$member_id,$result, $bln, $nik, $thn;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -273,5 +273,17 @@ class Index extends Component
         ]);
 
         return redirect()->route('cetak-tagihan',['id'=>$this->user_member_id,'tahun'=>$this->tahun]);
+    }
+
+
+    public function delete($bln, $nik, $thn)
+    {
+        // dd($bln);
+        // dd($nik);
+        // dd($thn);
+        // dd('delete iuran');
+        $user_member_id = \App\Models\UserMember::where('id_ktp', $nik)->first()->id;   
+        $delete = \App\Models\Iuran::where('bulan', $bln)->where('tahun', $thn)->where('user_member_id', $user_member_id)->first();
+        $delete->delete();
     }
 }

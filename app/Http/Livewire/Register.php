@@ -6,6 +6,7 @@ use Livewire\WithFileUploads;
 use App\Models\UserMember;
 use App\Models\User;
 use App\Models\BankAccount;
+use App\Models\RekomendatorAttachment;
 use Illuminate\Validation\Rule; 
 use Illuminate\Support\Facades\Hash;
 
@@ -68,6 +69,9 @@ class Register extends Component
 	public $extend_register3,$extend_register4,$extend_register5;
 	public $validate_form_1 = false,$validate_form_2=false,$validate_form_3=false,$validate_form_4=false,$validate_form_5=false;
 
+	public $insert=false;
+	public $attachment_rekomendator_file, $attachment_rekomendator_name, $rand_id;
+
 	protected $rules = [
         'name' => 'required|string',
         'name_kta' => 'required|string',
@@ -87,6 +91,7 @@ class Register extends Component
 
 	public function mount()
 	{
+		$this->rand_id = rand();
 		$this->form_no = date('ymd').UserMember::count();
 	}
 
@@ -163,7 +168,8 @@ class Register extends Component
 
 	public function calculate_()
 	{
-		$this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		// $this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
+		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
 		$this->total_sumbangan = $this->sumbangan * get_setting('sumbangan');
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
 		$this->total += $this->total_iuran_tetap;
@@ -247,6 +253,7 @@ class Register extends Component
 			'tanggal_lahir' => 'required',
 			'email' => 'required',
 		];
+
 
 		if($this->foto_ktp!="") $rules['foto_ktp'] = 'image:max:1024'; // 1Mb Max;
 		if($this->foto_kk!="") $rules['foto_kk'] = 'image:max:1024'; // 1Mb Max;
@@ -516,6 +523,13 @@ class Register extends Component
 
 			$dataExtends2->save();
 		}
+
+		// $recomendator_attachment 								= new RekomendatorAttachment();
+        // $recomendator_attachment->attachment_rekomendator_file 	= $this->attachment_rekomendator_file;
+        // $recomendator_attachment->attachment_rekomendator_name 	= $this->attachment_rekomendator_name;
+        // $recomendator_attachment->save();
+
+		$this->updateattachmentrekomendator($this->rand_id, $data->id);
 		
 		// $messageWa = "Pendaftaran anda akan segera kami proses, silahkan melakukan pembayaran pada salah satu Rekening Kami dibawah ini, dengan nominal : *Rp. ".format_idr($this->total)."*\n\n";
 		// //$messageWa .= "\nSilahkan lakukan pembayaran ke Nomor Rekening Perusahan dibawah ini\n\n";
@@ -556,5 +570,41 @@ class Register extends Component
 		$this->is_success =true;
         //session()->flash('message-success',__('Data saved successfully'));
         //return redirect()->to('login');
+
+
+		$this->insert = false;
     }
+
+
+	// public function saveattachmentrekomendator()
+    // {
+    //     // $this->validate([
+    //     //     'project_id'=>'image:max:1024',
+    //     //     'week'=>'required',
+    //     //     'budget'=>'required',
+    //     // ]);
+
+    //     $data 									= new RekomendatorAttachment();
+    //     $data->user_registration			 	= $this->rand_id;
+    //     $data->rekomendator_id				 	= $this->user_id_recomendation;
+    //     $data->attachment_rekomendator_file 	= $this->attachment_rekomendator_file;
+    //     $data->attachment_rekomendator_name 	= $this->attachment_rekomendator_name;
+    //     $data->save();
+
+    //     $this->insert = false;
+    //     // $this->reset(['budget']);
+    //     $this->emit('reload');
+    // }
+
+
+	// public function updateattachmentrekomendator($rand_id, $id_user_registration)
+    // {
+    //     $data 						= RekomendatorAttachment::where('user_registration', $rand_id)->get();
+    //     $data->user_registration 	= $user_registration;
+    //     $data->save();
+
+    //     $this->insert = false;
+    //     // $this->reset(['budget']);
+    //     // $this->emit('reload');
+    // }
 }

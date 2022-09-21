@@ -109,6 +109,10 @@
                         @error('blood_type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
+
+                <div class="row">
+                    <livewire:register-attachment-rekomendator />
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
