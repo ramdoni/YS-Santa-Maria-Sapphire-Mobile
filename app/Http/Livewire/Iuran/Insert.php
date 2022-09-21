@@ -25,11 +25,6 @@ class Insert extends Component
         return view('livewire.iuran.insert');
     }
 
-    public function mount()
-    {
-        // $this->payment_date = date('Y-m-d');
-    }
-
     public function showInsertIuran($check_id)
     {
         $this->check_id = $check_id;
@@ -42,16 +37,14 @@ class Insert extends Component
             'file_konfirmasi' => 'image|max:1024',
         ]);
     }
+
     public function calculate_()
     {
-        // $this->total_iuran_tetap = $this->iuran_tetap * 8000;
-        // $this->total_sumbangan_tetap = $this->iuran_tetap * 2000;
-        // $this->total = $this->total_iuran_tetap + $this->total_sumbangan_tetap;
-
-        $this->total_iuran_tetap = $this->iuran_tetap * 30000;
+        $this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
         $this->total = $this->total_iuran_tetap;
     }
-     public function save()
+
+    public function save()
     { 
         $this->validate([
             'bank_account_id'=> 'required',
@@ -73,7 +66,7 @@ class Insert extends Component
 
                 $iuran = new \App\Models\Iuran();
                 $iuran->user_member_id = $user_member_id;
-                $iuran->nominal = 10000;
+                $iuran->nominal = get_setting('iuran_tetap');
                 $duration = '+'.($this->iuran_tetap - 1).'months';
 
                 $iuran->from_periode = isset($periode->to_periode) ?  date('Y-m-d',strtotime("+1 months",strtotime($periode->to_periode))) : date('Y-m-d',strtotime("+1 months"));

@@ -114,9 +114,9 @@
                         </table>
                         <div class="alert alert-warning" role="alert">
                             <ol type="1">
-                                <li>Masa anggota > 6 bulan - 1 tahun jumlah santunan 25% tapi tidak bisa diambil tunai</li>
-                                <li>Masa > 1 tahun - tahun ke 2 jumlah santunan 50% ini juga tidak bisa diambil tunai</li>
-                                <li>Masa masuk tahun ke 3 baru  100%</li>
+                                <li>>2 th jumlah santunan 25% diperhitungkan pelayanan.</li>
+                                <li>>3 th jumlah santunan 50% diperhitungkan pelayanan </li>
+                                <li>>5 th santunan 100% dlm bentuk pelayanan</li>
                             </ol>
                         </div>
                     </div>

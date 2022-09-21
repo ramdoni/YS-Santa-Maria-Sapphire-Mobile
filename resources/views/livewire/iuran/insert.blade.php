@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="form-group col-md-7">
                             <!-- <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong>+ Sumbangan <strong class="text-danger">Rp. 2.000</strong></label> -->
-                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. 30.000</strong></label>
+                            <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(get_setting('iuran_tetap'))}}</strong></label>
                             <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
                                 <option value=""> --- Minimal 1 Bulan --- </option>
                                 @for($i=1;$i<=12;$i++)

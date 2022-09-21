@@ -27,9 +27,6 @@ class Cetak extends Component
         }
         if($this->keyword) {
             $data =  $data->Where('user_member.name','LIKE', '%'.$this->keyword.'%')->select('user_member.*');
-
-            /*->join('iuran','user_member.id','=','iuran.user_member_id')->where('type','Uang Pendaftaran')->whereYear('iuran.to_periode','<=',$this->tahun)->select('user_member.*')->Where('user_member.name','LIKE', '%'.$this->keyword.'%');
-            */
         }
         return view('livewire.iuran.cetak')->with(['data'=>$data->paginate(50)]);
     }
@@ -38,5 +35,4 @@ class Cetak extends Component
     {
         $this->tahun = date('Y');
     }
-   
 }

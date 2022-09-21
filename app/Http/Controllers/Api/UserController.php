@@ -293,11 +293,13 @@ class UserController extends Controller
 		}
 		$data->save();
 
-        $message = "Pendaftaran anda akan segera kami proses, silahkan melakukan pembayaran pada salah satu Rekening Kami dibawah ini, dengan nominal : *Rp. ".format_idr($data->total_pembayaran)."*\n\n";
-		foreach(\App\Models\BankAccount::all() as $bank){
-			$message .= $bank->bank .' '. $bank->no_rekening .' an '. $bank->owner ."\n";
-		}
-		$message  .= "\nKonfirmasi Pembayaran : \n<a href=\"". route('konfirmasi-pembayaran')."?s=". $data->no_form ."\">".route('konfirmasi-pembayaran')."?s=". $data->no_form ."</a>";
+        // $message = "Pendaftaran anda akan segera kami proses, silahkan melakukan pembayaran pada salah satu Rekening Kami dibawah ini, dengan nominal : *Rp. ".format_idr($data->total_pembayaran)."*\n\n";
+		// foreach(\App\Models\BankAccount::all() as $bank){
+		// 	$message .= $bank->bank .' '. $bank->no_rekening .' an '. $bank->owner ."\n";
+		// }
+		// $message  .= "\nKonfirmasi Pembayaran : \n<a href=\"". route('konfirmasi-pembayaran')."?s=". $data->no_form ."\">".route('konfirmasi-pembayaran')."?s=". $data->no_form ."</a>";
+
+        $message = "Pengajuan pendaftaran akan segera kami pross";
 
         \Mail::to($data->email)->send(new \App\Mail\GeneralEmail("[YS SANTA MARIA] - Pendaftaran Anggota",$message));    
 

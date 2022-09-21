@@ -74,7 +74,7 @@ class IuranController extends Controller
 
             $iuran = new Iuran();
             $iuran->user_member_id = $idMember->id;
-            $iuran->nominal = 10000;
+            $iuran->nominal = get_setting('iuran_tetap');
             $duration = '+'.($r->iuran_tetap - 1).'months';
 
             $iuran->from_periode = isset($periode->to_periode) ?  date('Y-m-d',strtotime("+1 months",strtotime($periode->to_periode))) : date('Y-m-d',strtotime("+1 months"));
@@ -94,23 +94,6 @@ class IuranController extends Controller
             if($r->device) $iuran->device = json_encode($r->device);
             $iuran->save();
         }
-
-        // $total = $r->iuran_tetap * 10000;
-        // $iuran = new Iuran();
-        // $iuran->user_member_id = $idMember->id;
-        // $iuran->nominal = $total;
-        // $duration = '+'.($r->iuran_tetap - 1).'months';
-        // $iuran->from_periode = date('Y-m-d',strtotime("+1 months",strtotime($periode->to_periode)));
-        // $iuran->to_periode = date('Y-m-d',strtotime($duration,strtotime($iuran->from_periode)));
-        // if($r->file_konfirmasi !=""){
-        //     $namefile_konfirmasi = 'file_konfirmasi'.date('Ymdhis').'.'.$r->file_konfirmasi->extension();
-        //     $r->file_konfirmasi->storePubliclyAs('public',$namefile_konfirmasi);
-        //     $iuran->file = $namefile_konfirmasi;
-        // }
-        // $iuran->bank_account_id = $r->bank_account_id;
-        // $iuran->type = 'Iuran';
-        // $iuran->status=1;
-        // $iuran->save();
 
         return response(['status'=>'success'], 200);
     }
