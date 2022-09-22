@@ -183,7 +183,7 @@
                             @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputAlamat">Uang Pendaftaran - Sukarela Minimum <strong class="text-danger">Rp. 50.000</strong></label>
+                            <label for="exampleInputAlamat">Uang Pendaftaran - Minimum <strong class="text-danger">Rp. {{format_idr(get_setting('uang_pendaftaran'))}}</strong></label>
                             <input type="number" class="form-control" wire:model="uang_pendaftaran" wire:input="calculate_">
                             @error('uang_pendaftaran') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>

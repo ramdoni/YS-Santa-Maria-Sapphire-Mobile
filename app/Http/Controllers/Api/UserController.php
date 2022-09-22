@@ -279,10 +279,9 @@ class UserController extends Controller
 		}
 		$data->iuran_tetap = $r->iuran_tetap;
 		$data->total_iuran_tetap = $r->iuran_tetap*get_setting('iuran_tetap');
-		$data->sumbangan = $r->sumbangan;
-		$data->total_sumbangan = $r->sumbangan*2000;
 		$data->uang_pendaftaran = $r->uang_pendaftaran;
-		$data->total_pembayaran = ($r->sumbangan*2000)+( $r->iuran_tetap*get_setting('iuran_tetap'))+$r->uang_pendaftaran;
+        // ditambah dana form 5.000
+		$data->total_pembayaran = 5000+($r->iuran_tetap*get_setting('iuran_tetap'))+$r->uang_pendaftaran;
 		
 		if($r->referal_code !="") {
 			$kord = User::where('referal_code',$r->referal_code)->first();
