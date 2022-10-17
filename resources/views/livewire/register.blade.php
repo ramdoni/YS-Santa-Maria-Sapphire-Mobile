@@ -171,6 +171,7 @@
                             @error('pas_foto') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>  
                     </div>
+                    
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputAlamat">Iuran <strong class="text-danger">Rp. {{format_idr(get_setting('iuran_tetap'))}}</strong> (Rp {{format_idr($total_iuran_tetap)}})</label>
@@ -186,6 +187,11 @@
                             <label for="exampleInputAlamat">Uang Pendaftaran - Sukarela Minimum <strong class="text-danger">Rp. 50.000</strong></label>
                             <input type="number" class="form-control" wire:model="uang_pendaftaran" wire:input="calculate_">
                             @error('uang_pendaftaran') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputAlamat">Sumbangan Sukarela</label>
+                            <input type="number" class="form-control" wire:model="sumbangan">
+                            @error('sumbangan') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
                     <div class="row">
