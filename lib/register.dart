@@ -26,7 +26,7 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
   XFile fotoKtp, fotoKk, pasphoto, waris1FotoKtp, waris2FotoKtp;
   final ImagePicker _picker = ImagePicker();
   // Data Pribadi
-  int checkNoKtp = 0, umur = 0, uangPendaftaran = 0;
+  int checkNoKtp = 0, umur = 0, uangPendaftaran = 0, sumbangan = 0;
   String noKtp,
       email,
       alamat,
@@ -39,8 +39,7 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
       jenisKelamin,
       telepon,
       kotaKabupaten,
-      iuranTetap,
-      sumbangan;
+      iuranTetap;
 
   // Ahli waris1 variable
   String waris1Nama,
@@ -626,6 +625,8 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                           value: iuranTetap,
                           underline: Container(),
                           items: <String>[
+                            '1',
+                            '2',
                             '3',
                             '4',
                             '5',
@@ -685,6 +686,29 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                           });
                         },
                       )),
+                  field_(
+                  "Sumbangan Sukarela",
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    maxLines: null,
+                    validator: (val) {
+                      if (val.isEmpty) {
+                        return "Sumbangan Sukarela harus diisi";
+                      }
+                      return null;
+                    },
+                    style: TextStyle(fontWeight: FontWeight.normal),
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(fontWeight: FontWeight.normal, fontSize: 13.0),
+                        contentPadding: EdgeInsets.only(top: 0, bottom: 0, right: 5, left: 10),
+                        hintText: ""),
+                    onChanged: (value) {
+                      setState(() {
+                        if (value != null) sumbangan = int.parse(value.toString());
+                      });
+                    },
+                  )),
                   profileButton(),
                 ])))
       ],

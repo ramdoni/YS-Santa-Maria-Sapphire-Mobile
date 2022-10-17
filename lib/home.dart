@@ -64,7 +64,7 @@ class HomeScreenState extends State<HomeScreen> {
           alignment: Alignment.topCenter,
           child: Row(children: const [
             Icon(Icons.check_box, size: 14, color: Colors.green),
-            Text("Lunas ", textAlign: TextAlign.center, style: TextStyle(color: Colors.green, fontSize: 12))
+            Text("Lunas ", textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(76, 175, 80, 1), fontSize: 12))
           ]));
     }
   }
