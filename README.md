@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Yayasan Kematian Santa Maria
 
 ## Instalasi
@@ -25,6 +24,3 @@ selesai
 
 - Laravel 8
 - Livewire
-=======
-# ys-santa-maria-sapphire
->>>>>>> 393044c65bff180bded88368ab85f27b69f57e96
