@@ -164,7 +164,7 @@ class UserController extends Controller
 			'name' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			'sumbangan'=>'required',
+			// 'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'email' => ['required',
@@ -280,6 +280,7 @@ class UserController extends Controller
 		$data->iuran_tetap = $r->iuran_tetap;
 		$data->total_iuran_tetap = $r->iuran_tetap*get_setting('iuran_tetap');
 		$data->uang_pendaftaran = $r->uang_pendaftaran;
+		$data->sumbangans = $r->sumbangan;
         // ditambah dana form 5.000
 		$data->total_pembayaran = 5000+($r->iuran_tetap*get_setting('iuran_tetap'))+$r->uang_pendaftaran;
 		

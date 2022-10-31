@@ -10,27 +10,16 @@
                         <hr />
                         <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="exampleInputAlamat">Iuran Tetap <strong class="text-danger">Rp. 8.000</strong> (Rp {{format_idr($total_iuran_tetap)}}) + Sumbangan <strong class="text-danger">Rp. 2.000</strong>  (Rp {{format_idr($total_sumbangan_tetap)}})</label>
+                                    <label for="exampleInputAlamat">Iuran Rp. {{format_idr(get_setting('iuran_tetap'))}}</label>
                                     <select class="form-control" wire:model="iuran_tetap" wire:change="calculate_">
-                                        <option value=""> --- Minimal 3 Bulan --- </option>
-                                        @for($i=3;$i<=40;$i++)
+                                        <option value="0"> --- Minimal 1 Bulan --- </option>
+                                        @for($i=1;$i<=12;$i++)
                                         <option>{{$i}}</option>
                                         @endfor
                                     </select>
                                     @error('iuran_tetap') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                         </div>
-                        <!--
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                    <label>{{ __('Payment Date')}}</label>
-                                    <input type="date" class="form-control" wire:model="payment_date" />
-                                    @error('payment_date')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                        </div>
-                    -->
                         <div class="row">
                             <ul>
                                 @foreach(\App\Models\BankAccount::all() as $bank)
@@ -46,9 +35,9 @@
                             @enderror
                         </div>
                         <div class="row">
-                                <div class="form-group col-md-6">
-                                    <h5 class="btn btn-outline-danger">Total Rp. {{format_idr($total)}}</h5>
-                                </div>
+                            <div class="form-group col-md-6">
+                                <h5 class="btn btn-outline-danger">Total Rp. {{format_idr($total)}}</h5>
+                            </div>
                         </div>
                         <div class="row">
                             @if(!empty($file_konfirmasi))

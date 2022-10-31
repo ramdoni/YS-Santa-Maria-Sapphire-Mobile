@@ -13,7 +13,7 @@ class Index extends Component
 {
     use WithPagination;
     
-    public $keyword,$user_member_id,$tahun,$koordinator_id,$koordinator,$member_id,$result, $bln, $nik, $thn;
+    public $keyword,$user_member_id,$tahun,$koordinator_id,$koordinator,$member_id,$result, $bln, $nik, $thn,$filter_konfirmasi_iuran;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -38,6 +38,11 @@ class Index extends Component
                                         ->orWhere('user_member.Id_Ktp', "LIKE","%{$this->keyword}%")
                                         ->orWhere('user_member.no_anggota_platinum', "LIKE","%{$this->keyword}%");
                                     });
+
+        if($this->filter_konfirmasi_iuran) {
+            $data->leftJoin('iuran','iuran.user_member_id','=','user_member.id')->where('iuran.status',1)->groupBy('iuran.user_member_id');
+        }
+            
         $data = $data->paginate(100);
         $paging = $data->links();
                                     
@@ -66,6 +71,13 @@ class Index extends Component
     {
         $this->koordinator = UserMember::select('user_member.name','user_member.id')->join('users','users.id','=','user_member.user_id')->where('users.user_access_id',3)->orderBy('user_member.name','ASC')->get();
         $this->tahun = date('Y');
+
+        $this->filter_konfirmasi_iuran = session()->has('filter_konfirmasi_iuran') ? session('filter_konfirmasi_iuran') : '';
+    }
+
+    public function updated($propertyName)
+    {
+        if($propertyName=='filter_konfirmasi_iuran') session(['filter_konfirmasi_iuran'=>$this->filter_konfirmasi_iuran]);
     }
 
     public function downloadExcel()
@@ -278,10 +290,6 @@ class Index extends Component
 
     public function delete($bln, $nik, $thn)
     {
-        // dd($bln);
-        // dd($nik);
-        // dd($thn);
-        // dd('delete iuran');
         $user_member_id = \App\Models\UserMember::where('id_ktp', $nik)->first()->id;   
         $delete = \App\Models\Iuran::where('bulan', $bln)->where('tahun', $thn)->where('user_member_id', $user_member_id)->first();
         $delete->delete();

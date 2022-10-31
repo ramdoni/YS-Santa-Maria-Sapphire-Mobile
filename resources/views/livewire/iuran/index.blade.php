@@ -26,6 +26,9 @@
                 <div class="col-md-5">
                     <a href="javascript:;" class="btn btn-info" wire:click="downloadExcel"><i class="fa fa-download"></i> Download</a>
                     @livewire('iuran.button-iuran')
+                    <label style="font-weight:normal;">
+                        <input type="checkbox" wire:model="filter_konfirmasi_iuran" value="1"> Konfirmasi Iuran
+                    </label>
                     <span wire:loading>
                         <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
                         <span class="sr-only">{{ __('Loading...') }}</span>

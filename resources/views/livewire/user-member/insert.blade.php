@@ -193,6 +193,12 @@
                             @error('uang_pendaftaran') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-md-12">
+                            <label for="exampleInputAlamat">Sumbangan Sukarela</label>
+                            <input type="number" class="form-control" wire:model="sumbangan" wire:input="calculate_">
+                            @error('sumbangan') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        
+                        <div class="form-group col-md-12">
                             <div class="row">
                                 <div class="col-md-8">
                                     <label for="">Dana Form </label>

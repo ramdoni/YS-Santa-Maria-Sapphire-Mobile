@@ -168,12 +168,9 @@ class Register extends Component
 
 	public function calculate_()
 	{
-		// $this->total_iuran_tetap = $this->iuran_tetap * get_setting('iuran_tetap');
 		$this->total_iuran_tetap = $this->iuran_tetap * 30000;
-		$this->total_sumbangan = $this->sumbangan * get_setting('sumbangan');
 		if($this->uang_pendaftaran!="") $this->total = $this->uang_pendaftaran;
 		$this->total += $this->total_iuran_tetap;
-		$this->total += $this->total_sumbangan;
 	}
 	
 	public function form1()
@@ -193,7 +190,6 @@ class Register extends Component
 			'name_kta' => 'required|string',
 			'phone_number' => 'required',
 			'iuran_tetap'=>'required',
-			'sumbangan'=>'required',
 			'uang_pendaftaran'=>'required|numeric|min:50000',
 			'tanggal_lahir' => 'required',
 			'email' => 'required',
@@ -356,7 +352,6 @@ class Register extends Component
 		$data->iuran_tetap = $this->iuran_tetap;
 		$data->total_iuran_tetap = $this->total_iuran_tetap;
 		$data->sumbangan = $this->sumbangan;
-		$data->total_sumbangan = $this->total_sumbangan;
 		$data->uang_pendaftaran = $this->uang_pendaftaran;
 		$data->total_pembayaran = $this->total;
 		
