@@ -51,8 +51,9 @@ class Insert extends Component
             'iuran_tetap'=> 'required'
         ]);
         foreach($this->check_id as $k => $user_member_id){
+            $thisyear = date("Y");
             $periode = \App\Models\Iuran::where('user_member_id',$user_member_id)->where('type','Iuran')->get()->last();
-            $tahun = $periode->tahun?$periode->tahun: date('Y');
+            $tahun = isset($periode->tahun) ? $periode->tahun : $thisyear;
 
             $bulan = isset($periode->bulan) ? $periode->bulan : 0;
             for($count=1;$this->iuran_tetap>=$count;$count++){

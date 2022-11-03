@@ -524,7 +524,7 @@ class Register extends Component
         // $recomendator_attachment->attachment_rekomendator_name 	= $this->attachment_rekomendator_name;
         // $recomendator_attachment->save();
 
-		$this->updateattachmentrekomendator($this->rand_id, $data->id);
+		// $this->updateattachmentrekomendator($this->rand_id, $data->id);
 		
 		// $messageWa = "Pendaftaran anda akan segera kami proses, silahkan melakukan pembayaran pada salah satu Rekening Kami dibawah ini, dengan nominal : *Rp. ".format_idr($this->total)."*\n\n";
 		// //$messageWa .= "\nSilahkan lakukan pembayaran ke Nomor Rekening Perusahan dibawah ini\n\n";
