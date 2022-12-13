@@ -274,7 +274,7 @@ class HomeScreenState extends State<HomeScreen> {
                               )
                             : Container(
                                 width: MediaQuery.of(context).size.width * 0.45,
-                                child: FlatButton(
+                                child: TextButton(
                                   onPressed: () {
                                     setState(() {
                                       isTabFocus = 1;
@@ -294,7 +294,7 @@ class HomeScreenState extends State<HomeScreen> {
                             ))
                         : Container(
                             width: MediaQuery.of(context).size.width * 0.45,
-                            child: FlatButton(
+                            child: TextButton(
                               onPressed: () {
                                 setState(() {
                                   isTabFocus = 2;

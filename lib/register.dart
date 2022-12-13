@@ -23,7 +23,7 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
   final TextEditingController _controllerTanggalLahirWaris2 = TextEditingController();
   String messageTitle = "Empty";
   String notificationAlert = "alert";
-  XFile fotoKtp, fotoKk, pasphoto, waris1FotoKtp, waris2FotoKtp;
+  XFile fotoKtp, ttdmember, fotoKk, pasphoto, waris1FotoKtp, waris2FotoKtp, ttdahliwaris1, ttdahliwaris2;
   final ImagePicker _picker = ImagePicker();
   // Data Pribadi
   int checkNoKtp = 0, umur = 0, uangPendaftaran = 0, sumbangan = 0;
@@ -131,6 +131,16 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
     } catch (error) {}
   }
 
+  void _chooseWaris1Ttd() async {
+    try {
+      var file =
+          await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxHeight: 500.0, maxWidth: 500.0);
+      setState(() {
+        ttdahliwaris1 = file;
+      });
+      // ignore: empty_catches
+    } catch (error) {}
+  }
   void _chooseWaris2Ktp() async {
     try {
       var file =
@@ -138,6 +148,16 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
       setState(() {
         waris2FotoKtp = file;
       });
+    } catch (error) {}
+  }
+  void _chooseWaris2Ttd() async {
+    try {
+      var file =
+          await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxHeight: 500.0, maxWidth: 500.0);
+      setState(() {
+        ttdahliwaris2 = file;
+      });
+      // ignore: empty_catches
     } catch (error) {}
   }
 
@@ -157,6 +177,16 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
           await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxHeight: 500.0, maxWidth: 500.0);
       setState(() {
         fotoKtp = file;
+      });
+    } catch (error) {}
+  }
+
+  void _chooseTtdMember() async {
+    try {
+      var file =
+          await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxHeight: 500.0, maxWidth: 500.0);
+      setState(() {
+        ttdmember = file;
       });
     } catch (error) {}
   }
@@ -583,6 +613,30 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                                         )),
                                         onTap: _chooseFotoKk))
                               ]))),
+                        Expanded(
+                            child: Container(
+                                child: Column(children: [
+                          const Text("TTD Member *"),
+                          (ttdmember == null
+                              ? Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  margin: EdgeInsets.only(top: 10.0),
+                                  decoration: BoxDecoration(border: Border.all(width: 1.0, color: Color(0xFFEBE6E6FF))),
+                                  child: IconButton(
+                                    icon: Icon(Icons.camera_alt_sharp),
+                                    tooltip: 'Take Photo',
+                                    onPressed: _chooseTtdMember,
+                                  ))
+                              : InkWell(
+                                  child: Container(
+                                      child: Image.file(
+                                    File(ttdmember.path),
+                                    width: 80,
+                                    fit: BoxFit.fitWidth,
+                                  )),
+                                  onTap: _chooseTtdMember,
+                                ))
+                        ]))),
                       Expanded(
                           child: Container(
                               margin: EdgeInsets.only(top: 10),
@@ -954,6 +1008,26 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                         fit: BoxFit.fitWidth,
                       )),
                       onTap: _chooseWaris1Ktp)),
+
+              const Text("TTD Waris 1"),
+              (ttdahliwaris1 == null
+                  ? Container(
+                      padding: const EdgeInsets.all(10.0),
+                      margin: const EdgeInsets.only(top: 10.0),
+                      decoration: BoxDecoration(border: Border.all(width: 1.0, color: const Color(0xFFEBE6E6FF))),
+                      child: IconButton(
+                        icon: const Icon(Icons.camera_alt_sharp),
+                        tooltip: 'Take Photo',
+                        onPressed: _chooseWaris1Ttd,
+                      ))
+                  : InkWell(
+                      child: Container(
+                          child: Image.file(
+                        File(ttdahliwaris1.path),
+                        width: 80,
+                        fit: BoxFit.fitWidth,
+                      )),
+                      onTap: _chooseWaris1Ttd)),
               ahliwaris1Button()
             ])));
   }
@@ -1207,6 +1281,25 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                         fit: BoxFit.fitWidth,
                       )),
                       onTap: _chooseWaris2Ktp)),
+              const Text("TTD Waris 2"),
+              (ttdahliwaris2 == null
+                  ? Container(
+                      padding: const EdgeInsets.all(10.0),
+                      margin: const EdgeInsets.only(top: 10.0),
+                      decoration: BoxDecoration(border: Border.all(width: 1.0, color: const Color(0xFFEBE6E6FF))),
+                      child: IconButton(
+                        icon: const Icon(Icons.camera_alt_sharp),
+                        tooltip: 'Take Photo',
+                        onPressed: _chooseWaris2Ttd,
+                      ))
+                  : InkWell(
+                      child: Container(
+                          child: Image.file(
+                        File(ttdahliwaris2.path),
+                        width: 80,
+                        fit: BoxFit.fitWidth,
+                      )),
+                      onTap: _chooseWaris2Ttd)),
               ahliwaris2Button()
             ])));
   }
@@ -1336,6 +1429,13 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                       }
                       if (fotoKtp == null) {
                         bottomInfo(context, "Foto KTP harus diisi");
+                        setState(() {
+                          isSubmited = false;
+                        });
+                        return;
+                      }
+                      if (ttdmember == null) {
+                        bottomInfo(context, "TTD Member harus diisi");
                         setState(() {
                           isSubmited = false;
                         });
@@ -1478,10 +1578,13 @@ class RegisterScreenState extends State<RegisterScreen> with Validation {
                       'hubungananggota2_lainnya': ''
                     }, {
                       'foto_ktp': (fotoKtp != null ? File(fotoKtp.path) : null),
+                      'ttd_member': (ttdmember != null ? File(ttdmember.path) : null),
                       'foto_kk': (fotoKk != null ? File(fotoKk.path) : null),
                       'pas_foto': (pasphoto != null ? File(pasphoto.path) : null),
                       'foto_ktpwaris1': (waris1FotoKtp != null ? File(waris1FotoKtp.path) : null),
-                      'foto_ktpwaris2': (waris2FotoKtp != null ? File(waris2FotoKtp.path) : null)
+                      'ttd_ahliwaris1': (ttdahliwaris1 != null ? File(ttdahliwaris1.path) : null),
+                      'foto_ktpwaris2': (waris2FotoKtp != null ? File(waris2FotoKtp.path) : null),
+                      'ttd_ahliwaris2': (ttdahliwaris2 != null ? File(ttdahliwaris2.path) : null)
                     }).then((value) {
                       log(value.data.toString());
                       if (value.data['status'] == 'success') {

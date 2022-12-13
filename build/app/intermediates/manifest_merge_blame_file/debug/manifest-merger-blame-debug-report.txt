@@ -1,0 +1,362 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.stalavista.sapphire_yssantamaria_application"
+4    android:versionCode="4"
+5    android:versionName="1.0.4" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="30" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\debug\AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-68
+15-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-65
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+16-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-79
+16-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-76
+17    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+17-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:28:5-82
+17-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:28:22-79
+18    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+18-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\6b79ccf5984b3a78d04bc528d4a728ec\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:25:5-79
+18-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\6b79ccf5984b3a78d04bc528d4a728ec\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:25:22-76
+19    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+19-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:26:5-110
+19-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:26:22-107
+20
+21    <application
+21-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:3:4-37:19
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.6.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\7fe385518f8e5d57b4e76f4daff8231b\core-1.6.0\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:extractNativeLibs="false"
+25        android:icon="@mipmap/ic_launcher"
+25-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:5:9-43
+26        android:label="YS Santa Maria - Sapphire"
+26-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:4:9-50
+27        android:usesCleartextTraffic="true" >
+27-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:6:9-44
+28        <activity
+28-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:7:9-27:20
+29            android:name="com.stalavista.sapphire_yssantamaria_application.MainActivity"
+29-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:8:13-41
+30            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+30-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:11:13-163
+31            android:hardwareAccelerated="true"
+31-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:12:13-47
+32            android:launchMode="singleTop"
+32-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:9:13-43
+33            android:theme="@style/LaunchTheme"
+33-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:10:13-47
+34            android:windowSoftInputMode="adjustResize" >
+34-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:13:13-55
+35
+36            <!--
+37                 Specifies an Android theme to apply to this Activity as soon as
+38                 the Android process has started. This theme is visible to the user
+39                 while the Flutter UI initializes. After that, this theme continues
+40                 to determine the Window background behind the Flutter UI.
+41            -->
+42            <meta-data
+42-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:18:13-21:17
+43                android:name="io.flutter.embedding.android.NormalTheme"
+43-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:19:15-70
+44                android:resource="@style/NormalTheme" />
+44-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:20:15-52
+45
+46            <intent-filter>
+46-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:22:13-26:29
+47                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+47-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:23:17-69
+47-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:23:25-66
+48                <action android:name="android.intent.action.MAIN" />
+48-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:24:17-68
+48-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:24:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:25:17-76
+50-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:25:27-74
+51            </intent-filter>
+52        </activity>
+53        <!--
+54 Don't delete the meta-data below.
+55             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+56        -->
+57        <meta-data
+57-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:30:9-32:33
+58            android:name="flutterEmbedding"
+58-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:31:13-44
+59            android:value="2" />
+59-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:32:13-30
+60        <meta-data
+60-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:34:9-36:55
+61            android:name="com.google.firebase.messaging.default_notification_channel_id"
+61-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:35:13-89
+62            android:value="high_importance_channel" />
+62-->C:\xampp-pmtepl\htdocs\santamariasaphire\android\app\src\main\AndroidManifest.xml:36:13-52
+63
+64        <provider
+64-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+65            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+65-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+66            android:authorities="com.stalavista.sapphire_yssantamaria_application.flutter.image_provider"
+66-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+67            android:exported="false"
+67-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+68            android:grantUriPermissions="true" >
+68-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+69            <meta-data
+69-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+70                android:name="android.support.FILE_PROVIDER_PATHS"
+70-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+71                android:resource="@xml/flutter_image_picker_file_paths" />
+71-->[:image_picker_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+72        </provider>
+73
+74        <service
+74-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-15:72
+75            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+75-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-107
+76            android:exported="false"
+76-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+77            android:permission="android.permission.BIND_JOB_SERVICE" />
+77-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-69
+78        <service
+78-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-22:19
+79            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+79-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-97
+80            android:exported="false" >
+80-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
+81            <intent-filter>
+81-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-21:29
+82                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+82-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-78
+82-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-75
+83            </intent-filter>
+84        </service>
+85
+86        <receiver
+86-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-31:20
+87            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+87-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-98
+88            android:exported="true"
+88-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-36
+89            android:permission="com.google.android.c2dm.permission.SEND" >
+89-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-73
+90            <intent-filter>
+90-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-30:29
+91                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+91-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-81
+91-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-78
+92            </intent-filter>
+93        </receiver>
+94
+95        <service
+95-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:33:9-37:19
+96            android:name="com.google.firebase.components.ComponentDiscoveryService"
+96-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:33:18-89
+97            android:directBootAware="true"
+97-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:35:13-43
+98            android:exported="false" >
+98-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:54:13-37
+99            <meta-data
+99-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-36:85
+100                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+100-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:35:17-128
+101                android:value="com.google.firebase.components.ComponentRegistrar" />
+101-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:36:17-82
+102            <meta-data
+102-->[:firebase_core] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+103                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+103-->[:firebase_core] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+104                android:value="com.google.firebase.components.ComponentRegistrar" />
+104-->[:firebase_core] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+105            <meta-data
+105-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:55:13-57:85
+106                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+106-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:56:17-119
+107                android:value="com.google.firebase.components.ComponentRegistrar" />
+107-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:57:17-82
+108            <meta-data
+108-->[com.google.firebase:firebase-datatransport:18.1.3] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c1767cc7329b810e851f9788ee2d728\jetified-firebase-datatransport-18.1.3\AndroidManifest.xml:28:13-30:85
+109                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+109-->[com.google.firebase:firebase-datatransport:18.1.3] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c1767cc7329b810e851f9788ee2d728\jetified-firebase-datatransport-18.1.3\AndroidManifest.xml:29:17-115
+110                android:value="com.google.firebase.components.ComponentRegistrar" />
+110-->[com.google.firebase:firebase-datatransport:18.1.3] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c1767cc7329b810e851f9788ee2d728\jetified-firebase-datatransport-18.1.3\AndroidManifest.xml:30:17-82
+111            <meta-data
+111-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\6b79ccf5984b3a78d04bc528d4a728ec\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:31:13-33:85
+112                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+112-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\6b79ccf5984b3a78d04bc528d4a728ec\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:32:17-139
+113                android:value="com.google.firebase.components.ComponentRegistrar" />
+113-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\6b79ccf5984b3a78d04bc528d4a728ec\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:33:17-82
+114            <meta-data
+114-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\3589bf976eea0364111961fdde565662\jetified-firebase-installations-17.0.1\AndroidManifest.xml:18:13-20:85
+115                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+115-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\3589bf976eea0364111961fdde565662\jetified-firebase-installations-17.0.1\AndroidManifest.xml:19:17-127
+116                android:value="com.google.firebase.components.ComponentRegistrar" />
+116-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\3589bf976eea0364111961fdde565662\jetified-firebase-installations-17.0.1\AndroidManifest.xml:20:17-82
+117        </service>
+118
+119        <provider
+119-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:39:9-43:38
+120            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+120-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:40:13-102
+121            android:authorities="com.stalavista.sapphire_yssantamaria_application.flutterfirebasemessaginginitprovider"
+121-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:41:13-88
+122            android:exported="false"
+122-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:42:13-37
+123            android:initOrder="99" />
+123-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:43:13-35
+124
+125        <activity
+125-->[:url_launcher_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+126            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+126-->[:url_launcher_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+127            android:exported="false"
+127-->[:url_launcher_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+128            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+128-->[:url_launcher_android] C:\xampp-pmtepl\htdocs\santamariasaphire\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+129
+130        <uses-library
+130-->[androidx.window:window:1.0.0-beta04] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\ff626be1e03cd09695b95848279da60d\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+131            android:name="androidx.window.extensions"
+131-->[androidx.window:window:1.0.0-beta04] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\ff626be1e03cd09695b95848279da60d\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+132            android:required="false" />
+132-->[androidx.window:window:1.0.0-beta04] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\ff626be1e03cd09695b95848279da60d\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+133        <uses-library
+133-->[androidx.window:window:1.0.0-beta04] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\ff626be1e03cd09695b95848279da60d\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+134            android:name="androidx.window.sidecar"
+134-->[androidx.window:window:1.0.0-beta04] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\ff626be1e03cd09695b95848279da60d\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+135            android:required="false" />
+135-->[androidx.window:window:1.0.0-beta04] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\ff626be1e03cd09695b95848279da60d\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+136
+137        <receiver
+137-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:31:9-38:20
+138            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+138-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:32:13-78
+139            android:exported="true"
+139-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:33:13-36
+140            android:permission="com.google.android.c2dm.permission.SEND" >
+140-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:34:13-73
+141            <intent-filter>
+141-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-30:29
+142                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+142-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-81
+142-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-78
+143            </intent-filter>
+144        </receiver>
+145        <!--
+146             FirebaseMessagingService performs security checks at runtime,
+147             but set to not exported to explicitly avoid allowing another app to call it.
+148        -->
+149        <service
+149-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:44:9-51:19
+150            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+150-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:45:13-82
+151            android:directBootAware="true"
+151-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:46:13-43
+152            android:exported="false" >
+152-->[com.google.firebase:firebase-messaging:23.0.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\4c5031b7231476bf6f7ccf6ef06010d2\jetified-firebase-messaging-23.0.4\AndroidManifest.xml:47:13-37
+153            <intent-filter android:priority="-500" >
+153-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-21:29
+154                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+154-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:17-78
+154-->[:firebase_messaging] C:\xampp-pmtepl\htdocs\santamariasaphire\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:20:25-75
+155            </intent-filter>
+156        </service>
+157        <service
+157-->[com.google.android.datatransport:transport-backend-cct:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d3cf67e27ec11a97947b9bf6d9357edd\jetified-transport-backend-cct-3.1.4\AndroidManifest.xml:29:9-35:19
+158            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+158-->[com.google.android.datatransport:transport-backend-cct:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d3cf67e27ec11a97947b9bf6d9357edd\jetified-transport-backend-cct-3.1.4\AndroidManifest.xml:30:13-103
+159            android:exported="false" >
+159-->[com.google.android.datatransport:transport-backend-cct:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d3cf67e27ec11a97947b9bf6d9357edd\jetified-transport-backend-cct-3.1.4\AndroidManifest.xml:31:13-37
+160            <meta-data
+160-->[com.google.android.datatransport:transport-backend-cct:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d3cf67e27ec11a97947b9bf6d9357edd\jetified-transport-backend-cct-3.1.4\AndroidManifest.xml:32:13-34:39
+161                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+161-->[com.google.android.datatransport:transport-backend-cct:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d3cf67e27ec11a97947b9bf6d9357edd\jetified-transport-backend-cct-3.1.4\AndroidManifest.xml:33:17-94
+162                android:value="cct" />
+162-->[com.google.android.datatransport:transport-backend-cct:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d3cf67e27ec11a97947b9bf6d9357edd\jetified-transport-backend-cct-3.1.4\AndroidManifest.xml:34:17-36
+163        </service>
+164        <service
+164-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:26:9-30:19
+165            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+165-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:27:13-117
+166            android:exported="false"
+166-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:28:13-37
+167            android:permission="android.permission.BIND_JOB_SERVICE" >
+167-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:29:13-69
+168        </service>
+169
+170        <receiver
+170-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:32:9-34:40
+171            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+171-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:33:13-132
+172            android:exported="false" />
+172-->[com.google.android.datatransport:transport-runtime:3.1.4] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d466b5bca74d720ade1ad11e0bdcb69a\jetified-transport-runtime-3.1.4\AndroidManifest.xml:34:13-37
+173
+174        <provider
+174-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:26:9-31:39
+175            android:name="com.google.firebase.provider.FirebaseInitProvider"
+175-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:27:13-77
+176            android:authorities="com.stalavista.sapphire_yssantamaria_application.firebaseinitprovider"
+176-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:28:13-72
+177            android:directBootAware="true"
+177-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:29:13-43
+178            android:exported="false"
+178-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:30:13-37
+179            android:initOrder="100" />
+179-->[com.google.firebase:firebase-common:20.1.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\d7a7120dad736b8f06739898f3118ba1\jetified-firebase-common-20.1.1\AndroidManifest.xml:31:13-36
+180
+181        <receiver
+181-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:29:9-33:20
+182            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+182-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:30:13-85
+183            android:enabled="true"
+183-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:31:13-35
+184            android:exported="false" >
+184-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:32:13-37
+185        </receiver>
+186
+187        <service
+187-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:35:9-38:40
+188            android:name="com.google.android.gms.measurement.AppMeasurementService"
+188-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:36:13-84
+189            android:enabled="true"
+189-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:37:13-35
+190            android:exported="false" />
+190-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:38:13-37
+191        <service
+191-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:39:9-43:72
+192            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+192-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:40:13-87
+193            android:enabled="true"
+193-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:41:13-35
+194            android:exported="false"
+194-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:42:13-37
+195            android:permission="android.permission.BIND_JOB_SERVICE" />
+195-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\5bcb5105fa7a88beebd592b1a0e585e8\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:43:13-69
+196
+197        <activity
+197-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\e9a9fc15413bbd091a9caa3bfbc55ce1\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+198            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+198-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\e9a9fc15413bbd091a9caa3bfbc55ce1\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+199            android:exported="false"
+199-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\e9a9fc15413bbd091a9caa3bfbc55ce1\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+200            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+200-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\e9a9fc15413bbd091a9caa3bfbc55ce1\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+201
+202        <meta-data
+202-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\c5b91c9923d5680f1387057565238861\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+203            android:name="com.google.android.gms.version"
+203-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\c5b91c9923d5680f1387057565238861\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+204            android:value="@integer/google_play_services_version" />
+204-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Sidik\.gradle\caches\transforms-2\files-2.1\c5b91c9923d5680f1387057565238861\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+205    </application>
+206
+207</manifest>
